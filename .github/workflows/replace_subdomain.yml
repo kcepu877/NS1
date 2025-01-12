@@ -34,7 +34,7 @@ jobs:
     - name: Check if _worker.js is updated
       run: |
         echo "Checking if the subdomain is updated in _worker.js"
-        if ! grep -q "ns1.cepu.us.kg" _worker.js; then
+        if ! grep -q "ns1.bmkg.xyz" _worker.js; then
           echo "_worker.js updated successfully"
         else
           echo "_worker.js not updated"
