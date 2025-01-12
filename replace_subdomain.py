@@ -23,19 +23,23 @@ def read_subdomain_from_yaml(yaml_file):
     return None
 
 # Fungsi untuk mengganti subdomain di _worker.js
-def replace_subdomain_in_worker(worker_file, new_subdomain, old_subdomain):
-    with open(worker_file, 'r') as file:
-        content = file.read()
+def replace_subdomain_in_workerjs(workerjs_file, new_subdomain, old_subdomain):
+    with open(workerjs_file, 'r') as file:
+        lines = file.readlines()
 
-    # Hanya mengganti subdomain yang sesuai (contoh: xxx.cepu.us.kg) dengan subdomain baru
-    updated_content = re.sub(r'\b' + re.escape(old_subdomain) + r'\.cepu\.us\.kg', new_subdomain + '.cepu.us.kg', content)
+    updated_lines = []
+    for line in lines:
+        # Hanya mengganti subdomain yang sesuai (contoh: xxx.bmkg.xyz) dengan subdomain baru
+        if old_subdomain in line:
+            line = re.sub(r'\b' + re.escape(old_subdomain) + r'\.bmkg\.xyz', new_subdomain + '.bmkg.xyz', line)
+        updated_lines.append(line)
 
-    with open(worker_file, 'w') as file:
-        file.write(updated_content)
+    with open(workerjs_file, 'w') as file:
+        file.writelines(updated_lines)
 
 def main():
     yaml_file = 'subdomain.yml'
-    worker_file = '_worker.js'  # Ganti nama file dengan _worker.js
+    workerjs_file = '_worker.js'
     list_file = 'subdomain_list.txt'
 
     # Baca daftar subdomain dari file
@@ -62,7 +66,7 @@ def main():
     next_subdomain = subdomain_list[next_index]
 
     # Ganti subdomain di _worker.js
-    replace_subdomain_in_worker(worker_file, next_subdomain, last_subdomain)
+    replace_subdomain_in_workerjs(workerjs_file, next_subdomain, last_subdomain)
 
     # Simpan subdomain yang digunakan ke file YAML
     save_subdomain_to_yaml(next_subdomain, yaml_file)
