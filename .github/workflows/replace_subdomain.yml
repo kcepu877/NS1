@@ -2,7 +2,7 @@ name: Replace Subdomain Weekly
 
 on:
   schedule:
-    - cron: '0 0 * * 0'  # Jalankan setiap minggu pada pukul 00:00 UTC pada hari Minggu
+    - cron: '0 0 * * 0' # Jalankan setiap minggu pada pukul 00:00 UTC pada hari Minggu
   workflow_dispatch:
 
 jobs:
@@ -11,10 +11,10 @@ jobs:
     
     steps:
     - name: Checkout repository
-      uses: actions/checkout@v3  # Gunakan versi terbaru
+      uses: actions/checkout@v2
 
     - name: Set up Python
-      uses: actions/setup-python@v4  # Gunakan versi terbaru
+      uses: actions/setup-python@v2
       with:
         python-version: '3.x'
 
@@ -26,15 +26,34 @@ jobs:
     - name: Run Python script to replace subdomain
       run: python replace_subdomain.py
 
-    - name: Commit changes to _worker.js and subdomain.yml
+    - name: Display updated wrangler.toml
+      run: |
+        echo "Displaying wrangler.toml content after update:"
+        cat wrangler.toml
+
+    - name: Display updated index.html
+      run: |
+        echo "Displaying index.html content after update:"
+        cat index.html
+
+    - name: Check if files are updated
+      run: |
+        echo "Checking if 'ns1.cepu.us.kg' is removed from wrangler.toml and index.html"
+        if ! grep -q "ns1.cepu.us.kg" wrangler.toml; then
+          echo "wrangler.toml updated successfully"
+        else
+          echo "wrangler.toml not updated"
+        fi
+        if ! grep -q "ns1.cepu.us.kg" index.html; then
+          echo "index.html updated successfully"
+        else
+          echo "index.html not updated"
+        fi
+
+    - name: Commit changes to wrangler.toml and index.html
       run: |
         git config --global user.name "GitHub Actions"
         git config --global user.email "actions@github.com"
-        git add _worker.js subdomain.yml  # Menambahkan file yang berubah
-        git diff --cached
-        if git diff --cached --exit-code; then
-          echo "No changes to commit"
-        else
-          git commit -m "Update subdomain"
-          git push
-        fi
+        git add wrangler.toml index.html subdomain.yml
+        git commit -m "Update subdomain"
+        git push
