@@ -93,22 +93,22 @@ function generateUUIDv4() {
                     // sub1
                     if (type === 'vless') {
                         if (wildcard) {
-                            urlString = `vless://${uuid}@${wildcard}:443?encryption=none&type=ws&host=${wildcard}woless.bmkg.xyz&path=%2F${ip}-${port}&security=tls&sni=${wildcard}woless.bmkg.xyz#(${wildcard})${country}+${provider}`;
+                            urlString = `vless://${uuid}@${wildcard}:443?encryption=none&type=ws&host=${wildcard}gratisan.bmkg.xyz&path=%2F${ip}-${port}&security=tls&sni=${wildcard}gratisan.bmkg.xyz#(${wildcard})${country}+${provider}`;
                         } else {
-                            urlString = `vless://${uuid}@woless.bmkg.xyz:443?encryption=none&type=ws&host=woless.bmkg.xyz&path=%2F${ip}-${port}&security=tls&sni=woless.bmkg.xyz#${country}+${provider}`;
+                            urlString = `vless://${uuid}@gratisan.bmkg.xyz:443?encryption=none&type=ws&host=gratisan.bmkg.xyz&path=%2F${ip}-${port}&security=tls&sni=gratisan.bmkg.xyz#${country}+${provider}`;
                         }
                     } else if (type === 'trojan') {
                         if (wildcard) {
-                            urlString = `trojan://${uuid}@${wildcard}:443?encryption=none&type=ws&host=${wildcard}woless.bmkg.xyz&path=%2F${ip}-${port}&security=tls&sni=${wildcard}woless.bmkg.xyz#(${wildcard})${country}+${provider}`;
+                            urlString = `trojan://${uuid}@${wildcard}:443?encryption=none&type=ws&host=${wildcard}gratisan.bmkg.xyz&path=%2F${ip}-${port}&security=tls&sni=${wildcard}gratisan.bmkg.xyz#(${wildcard})${country}+${provider}`;
                         } else {
-                            urlString = `trojan://${uuid}@woless.bmkg.xyz:443?encryption=none&type=ws&host=woless.bmkg.xyz&path=%2F${ip}-${port}&security=tls&sni=woless.bmkg.xyz#${country}+${provider}`;
+                            urlString = `trojan://${uuid}@gratisan.bmkg.xyz:443?encryption=none&type=ws&host=gratisan.bmkg.xyz&path=%2F${ip}-${port}&security=tls&sni=gratisan.bmkg.xyz#${country}+${provider}`;
                         }
                     } else if (type === 'ss') {
                         const ssBase64 = btoa('onEto5d2d2a2c5Z3b2E9sbLAAe6bYmD3v8l8fGVbt34='); // Base64 encode SS password (change with your actual password)
                         if (wildcard) {
-                            urlString = `ss://bm9uZTo1ZDJlYmQyYS05Y2I5LTRkMWItYWY1NS04NjE3ZDNlODFmMzk%3D@${wildcard}:443?encryption=none&type=ws&host=${wildcard}woless.bmkg.xyz&path=%2F${ip}-${port}&security=tls&sni=${wildcard}woless.bmkg.xyz#(${wildcard})${country}+${provider}`;
+                            urlString = `ss://bm9uZTo1ZDJlYmQyYS05Y2I5LTRkMWItYWY1NS04NjE3ZDNlODFmMzk%3D@${wildcard}:443?encryption=none&type=ws&host=${wildcard}gratisan.bmkg.xyz&path=%2F${ip}-${port}&security=tls&sni=${wildcard}gratisan.bmkg.xyz#(${wildcard})${country}+${provider}`;
                         } else {
-                            urlString = `ss://bm9uZTo1ZDJlYmQyYS05Y2I5LTRkMWItYWY1NS04NjE3ZDNlODFmMzk%3D@woless.bmkg.xyz:443?encryption=none&type=ws&host=woless.bmkg.xyz&path=%2F${ip}-${port}&security=tls&sni=woless.bmkg.xyz#${country}+${provider}`;
+                            urlString = `ss://bm9uZTo1ZDJlYmQyYS05Y2I5LTRkMWItYWY1NS04NjE3ZDNlODFmMzk%3D@gratisan.bmkg.xyz:443?encryption=none&type=ws&host=gratisan.bmkg.xyz&path=%2F${ip}-${port}&security=tls&sni=gratisan.bmkg.xyz#${country}+${provider}`;
                         }
                     }
                 } else if (countryParam2) {
