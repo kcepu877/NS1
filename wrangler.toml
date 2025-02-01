@@ -1,4 +1,4 @@
-name = "link" # todo
+name = "ns1" # todo
 main = "_worker.js"
 compatibility_date = "2024-05-26"
 
@@ -11,5 +11,90 @@ enabled = true
 
 
 [[routes]]
-pattern = "sub.bmkg.xyz"
+pattern = "wong.kere.us.kg"
+custom_domain = true
+[[routes]]
+pattern = "user.kere.us.kg"
+custom_domain = true
+[[routes]]
+pattern = "ava.game.naver.com.user.kere.us.kg"
+custom_domain = true
+[[routes]]
+pattern = "graph.instagram.com.user.kere.us.kg"
+custom_domain = true
+[[routes]]
+pattern = "quiz.int.vidio.com.user.kere.us.kg"
+custom_domain = true
+[[routes]]
+pattern = "live.iflix.com.user.kere.us.kg"
+custom_domain = true
+[[routes]]
+pattern = "support.zoom.us.user.kere.us.kg"
+custom_domain = true
+[[routes]]
+pattern = "blog.webex.com.user.kere.us.kg"
+custom_domain = true
+[[routes]]
+pattern = "investors.spotify.com.user.kere.us.kg"
+custom_domain = true
+[[routes]]
+pattern = "cache.netflix.com.user.kere.us.kg"
+custom_domain = true
+[[routes]]
+pattern = "zaintest.vuclip.com.user.kere.us.kg"
+custom_domain = true
+[[routes]]
+pattern = "ads.ruangguru.com.user.kere.us.kg"
+custom_domain = true
+[[routes]]
+pattern = "io.ruangguru.com.user.kere.us.kg"
+custom_domain = true
+[[routes]]
+pattern = "api.midtrans.com.user.kere.us.kg"
+custom_domain = true
+[[routes]]
+pattern = "investor.fb.com.user.kere.us.kg"
+custom_domain = true
+
+[[routes]]
+pattern = "punya.bmkg.xyz"
+custom_domain = true
+[[routes]]
+pattern = "ava.game.naver.com.punya.bmkg.xyz"
+custom_domain = true
+[[routes]]
+pattern = "graph.instagram.com.punya.bmkg.xyz"
+custom_domain = true
+[[routes]]
+pattern = "quiz.int.vidio.com.punya.bmkg.xyz"
+custom_domain = true
+[[routes]]
+pattern = "live.iflix.com.punya.bmkg.xyz"
+custom_domain = true
+[[routes]]
+pattern = "support.zoom.us.punya.bmkg.xyz"
+custom_domain = true
+[[routes]]
+pattern = "blog.webex.com.punya.bmkg.xyz"
+custom_domain = true
+[[routes]]
+pattern = "investors.spotify.com.punya.bmkg.xyz"
+custom_domain = true
+[[routes]]
+pattern = "cache.netflix.com.punya.bmkg.xyz"
+custom_domain = true
+[[routes]]
+pattern = "zaintest.vuclip.com.punya.bmkg.xyz"
+custom_domain = true
+[[routes]]
+pattern = "ads.ruangguru.com.punya.bmkg.xyz"
+custom_domain = true
+[[routes]]
+pattern = "io.ruangguru.com.punya.bmkg.xyz"
+custom_domain = true
+[[routes]]
+pattern = "api.midtrans.com.punya.bmkg.xyz"
+custom_domain = true
+[[routes]]
+pattern = "investor.fb.com.punya.bmkg.xyz"
 custom_domain = true
