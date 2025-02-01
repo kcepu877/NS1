@@ -2,7 +2,7 @@ name: Replace Subdomain Weekly
 
 on:
   schedule:
-    - cron: '0 0 * * 0' # Jalankan setiap minggu pada pukul 00:00 UTC pada hari Minggu
+  - cron: '0 0 * * 0' # Jalankan setiap minggu pada pukul 00:00 UTC pada hari Minggu
   workflow_dispatch:
 
 jobs:
@@ -11,10 +11,10 @@ jobs:
     
     steps:
     - name: Checkout repository
-      uses: actions/checkout@v2
+      uses: actions/checkout@v3
 
     - name: Set up Python
-      uses: actions/setup-python@v2
+      uses: actions/setup-python@v4
       with:
         python-version: '3.x'
 
@@ -26,24 +26,24 @@ jobs:
     - name: Run Python script to replace subdomain
       run: python replace_subdomain.py
 
-    - name: Display updated _worker.js
+    - name: Display updated wrangler.toml
       run: |
-        echo "Displaying _worker.js content after update:"
-        cat _worker.js
+        echo "Displaying wrangler.toml content after update:"
+        cat wrangler.toml
 
-    - name: Check if _worker.js is updated
+    - name: Check if wrangler.toml is updated
       run: |
-        echo "Checking if the subdomain is updated in _worker.js"
-        if ! grep -q "ns1.bmkg.xyz" _worker.js; then
-          echo "_worker.js updated successfully"
+        echo "Checking if 'ns1.kere.us.kg' is removed from wrangler.toml"
+        if ! grep -q "ns1.kere.us.kg" wrangler.toml; then
+          echo "wrangler.toml updated successfully"
         else
-          echo "_worker.js not updated"
+          echo "wrangler.toml not updated"
         fi
 
-    - name: Commit changes to _worker.js and subdomain.yml
+    - name: Commit changes to wrangler.toml and subdomain.yml
       run: |
-        git config --global user.name "GitHub Actions"
-        git config --global user.email "actions@github.com"
-        git add _worker.js subdomain.yml
-        git commit -m "Update subdomain in _worker.js"
+        git config --local user.name "github-actions[bot]"
+        git config --local user.email "github-actions[bot]@users.noreply.github.com"
+        git add wrangler.toml subdomain.yml
+        git commit -m "Update subdomain"
         git push
