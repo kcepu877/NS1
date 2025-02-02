@@ -37,15 +37,21 @@ def replace_subdomain_in_toml(toml_file, new_subdomain, old_subdomain):
     with open(toml_file, 'w') as file:
         file.writelines(updated_lines)
 
-# Fungsi untuk mengganti subdomain dalam konten (misalnya di file HTML)
-def replace_subdomain_in_html(content, new_subdomain, old_subdomain):
+# Fungsi untuk mengganti subdomain di _worker.js
+def replace_subdomain_in_worker_js(worker_js_file, new_subdomain, old_subdomain):
+    with open(worker_js_file, 'r') as file:
+        content = file.read()
+
     # Hanya mengganti subdomain yang sesuai (contoh: xxx.kere.us.kg) dengan subdomain baru
     updated_content = re.sub(r'\b' + re.escape(old_subdomain) + r'\.kere\.us\.kg', new_subdomain + '.kere.us.kg', content)
-    return updated_content
+
+    with open(worker_js_file, 'w') as file:
+        file.write(updated_content)
 
 def main():
     yaml_file = 'subdomain.yml'
     toml_file = 'wrangler.toml'
+    worker_js_file = '_worker.js'  # Mengganti index.html menjadi _worker.js
     list_file = 'subdomain_list.txt'
 
     # Baca daftar subdomain dari file
@@ -71,8 +77,9 @@ def main():
     next_index = (current_index + 1) % len(subdomain_list)
     next_subdomain = subdomain_list[next_index]
 
-    # Ganti subdomain di wrangler.toml
+    # Ganti subdomain di wrangler.toml dan _worker.js
     replace_subdomain_in_toml(toml_file, next_subdomain, last_subdomain)
+    replace_subdomain_in_worker_js(worker_js_file, next_subdomain, last_subdomain)
 
     # Simpan subdomain yang digunakan ke file YAML
     save_subdomain_to_yaml(next_subdomain, yaml_file)
