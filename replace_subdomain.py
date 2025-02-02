@@ -37,7 +37,7 @@ def replace_subdomain_in_toml(toml_file, new_subdomain, old_subdomain):
     with open(toml_file, 'w') as file:
         file.writelines(updated_lines)
 
-# Fungsi untuk mengganti subdomain di _worker.js
+# Fungsi untuk mengganti subdomain di js/_worker.js
 def replace_subdomain_in_worker_js(worker_js_file, new_subdomain, old_subdomain):
     with open(worker_js_file, 'r') as file:
         content = file.read()
@@ -51,7 +51,7 @@ def replace_subdomain_in_worker_js(worker_js_file, new_subdomain, old_subdomain)
 def main():
     yaml_file = 'subdomain.yml'
     toml_file = 'wrangler.toml'
-    worker_js_file = '_worker.js'  # Mengganti index.html menjadi _worker.js
+    worker_js_file = 'js/_worker.js'  # Mengganti _worker.js menjadi js/_worker.js
     list_file = 'subdomain_list.txt'
 
     # Baca daftar subdomain dari file
@@ -77,7 +77,7 @@ def main():
     next_index = (current_index + 1) % len(subdomain_list)
     next_subdomain = subdomain_list[next_index]
 
-    # Ganti subdomain di wrangler.toml dan _worker.js
+    # Ganti subdomain di wrangler.toml dan js/_worker.js
     replace_subdomain_in_toml(toml_file, next_subdomain, last_subdomain)
     replace_subdomain_in_worker_js(worker_js_file, next_subdomain, last_subdomain)
 
