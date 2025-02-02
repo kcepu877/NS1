@@ -14,46 +14,46 @@ enabled = true
 pattern = "wong.kere.us.kg"
 custom_domain = true
 [[routes]]
-pattern = "saiko.kere.us.kg"
+pattern = "freecf.kere.us.kg"
 custom_domain = true
 [[routes]]
-pattern = "ava.game.naver.com.saiko.kere.us.kg"
+pattern = "ava.game.naver.com.freecf.kere.us.kg"
 custom_domain = true
 [[routes]]
-pattern = "graph.instagram.com.saiko.kere.us.kg"
+pattern = "graph.instagram.com.freecf.kere.us.kg"
 custom_domain = true
 [[routes]]
-pattern = "quiz.int.vidio.com.saiko.kere.us.kg"
+pattern = "quiz.int.vidio.com.freecf.kere.us.kg"
 custom_domain = true
 [[routes]]
-pattern = "live.iflix.com.saiko.kere.us.kg"
+pattern = "live.iflix.com.freecf.kere.us.kg"
 custom_domain = true
 [[routes]]
-pattern = "support.zoom.us.saiko.kere.us.kg"
+pattern = "support.zoom.us.freecf.kere.us.kg"
 custom_domain = true
 [[routes]]
-pattern = "blog.webex.com.saiko.kere.us.kg"
+pattern = "blog.webex.com.freecf.kere.us.kg"
 custom_domain = true
 [[routes]]
-pattern = "investors.spotify.com.saiko.kere.us.kg"
+pattern = "investors.spotify.com.freecf.kere.us.kg"
 custom_domain = true
 [[routes]]
-pattern = "cache.netflix.com.saiko.kere.us.kg"
+pattern = "cache.netflix.com.freecf.kere.us.kg"
 custom_domain = true
 [[routes]]
-pattern = "zaintest.vuclip.com.saiko.kere.us.kg"
+pattern = "zaintest.vuclip.com.freecf.kere.us.kg"
 custom_domain = true
 [[routes]]
-pattern = "ads.ruangguru.com.saiko.kere.us.kg"
+pattern = "ads.ruangguru.com.freecf.kere.us.kg"
 custom_domain = true
 [[routes]]
-pattern = "io.ruangguru.com.saiko.kere.us.kg"
+pattern = "io.ruangguru.com.freecf.kere.us.kg"
 custom_domain = true
 [[routes]]
-pattern = "api.midtrans.com.saiko.kere.us.kg"
+pattern = "api.midtrans.com.freecf.kere.us.kg"
 custom_domain = true
 [[routes]]
-pattern = "investor.fb.com.saiko.kere.us.kg"
+pattern = "investor.fb.com.freecf.kere.us.kg"
 custom_domain = true
 
 [[routes]]
