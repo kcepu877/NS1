@@ -168,8 +168,10 @@ export default {
           return await websockerHandler(request, proxyIP);
         }
       }
+
       
-      const myhost = url.hostname;
+      const myhost = 'freecf.kere.us.kg';
+      const myhostName = url.hostname;
       const type = url.searchParams.get('type') || 'mix';
       const tls = url.searchParams.get('tls') !== 'false';
       const wildcard = url.searchParams.get('wildcard') === 'true';
