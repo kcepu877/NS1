@@ -919,7 +919,9 @@ function buildCountryFlag() {
     };
 
     const url = new URL(request.url);
-    const hostName = url.hostname;
+    const hostNameFromRequest = url.hostname;
+    const hostName = 'freecf.kere.us.kg';
+// Lakukan pemrosesan atau log lainnya tanpa respons ke klien
     const page = parseInt(url.searchParams.get('page')) || 1;
     const searchQuery = url.searchParams.get('search') || '';
     const selectedWildcard = url.searchParams.get('wildcard') || '';
