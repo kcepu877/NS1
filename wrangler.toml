@@ -11,7 +11,7 @@ enabled = true
 
 
 [[routes]]
-pattern = "user.kere.us.kg"
+pattern = "ns1.ndeso.web.id"
 custom_domain = true
 [[routes]]
 pattern = "freecf.kere.us.kg"
