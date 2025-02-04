@@ -847,66 +847,36 @@ async function handleSubRequest(hostnem) {
 return html
 }
 
-let pathToIpPortMapping = {}; // Pindahkan ke luar agar bisa diakses oleh handleWebRequest
-let isConfigFetched = false; // Untuk memastikan fetchConfigs hanya dipanggil sekali
-
-async function fetchConfigs() {
-    try {
-        const response = await fetch(proxyListURL);
-        const text = await response.text();
-
-        if (!text) {
-            throw new Error('Empty response from API');
-        }
-
-        let pathCounters = {};
-        pathToIpPortMapping = {}; // Reset mapping sebelum diisi ulang
-
-        text.trim().split('\n').forEach((line, index) => {
-            if (!line.trim()) return;
-
-            const [ip, port, countryCode, isp] = line.split(',');
-
-            if (!ip || !port || !countryCode || !isp) return;
-
-            if (!pathCounters[countryCode]) {
-                pathCounters[countryCode] = 1;
-            }
-
-            const path = `/Project-Free-Proxy-bmkg${countryCode}${pathCounters[countryCode]}`;
-            pathCounters[countryCode]++;
-
-            // Simpan mapping path ke ip-port
-            pathToIpPortMapping[path] = `${ip}-${port}`;
-        });
-
-        isConfigFetched = true; // Tandai bahwa konfigurasi sudah di-fetch
-        console.log('Path to IP-Port Mapping:', pathToIpPortMapping);
-    } catch (error) {
-        console.error('Error fetching configurations:', error);
-    }
-}
-
-// Handler utama untuk menerima request
 async function handleWebRequest(request) {
-    
-    console.log(`Requested Path: ${requestedPath}`);
+    const apiUrl = proxyListURL;
 
-    // Pastikan konfigurasi sudah di-fetch sebelum digunakan
-    if (!isConfigFetched) {
-        await fetchConfigs();
-    }
+    const fetchConfigs = async () => {
+        try {
+            const response = await fetch(apiUrl);
+            const text = await response.text();
+            
+            let pathCounters = {};
 
-    // Cek apakah path ada dalam mapping
-    if (pathToIpPortMapping[requestedPath]) {
-        return new Response(pathToIpPortMapping[requestedPath]);
-    } else {
-        return new Response('Path not found', { status: 404 });
-    }
+            const configs = text.trim().split('\n').map((line) => {
+                const [ip, port, countryCode, isp] = line.split(',');
 
+                if (!pathCounters[countryCode]) {
+                    pathCounters[countryCode] = 1;
+                }
 
+                const path = `/${countryCode}${pathCounters[countryCode]}`;
+                pathCounters[countryCode]++;
 
+                // **Perubahan Minimal:** Memastikan setiap path menyimpan `ip:port`
+                return { ip, port, countryCode, isp, path, ipPort: `${ip}-${port}` };
+            });
 
+            return configs;
+        } catch (error) {
+            console.error('Error fetching configurations:', error);
+            return [];
+        }
+    };
 
    
 
@@ -953,8 +923,7 @@ function buildCountryFlag() {
     const url = new URL(request.url);
     const hostNameFromRequest = url.hostname;
     const hostName = 'freecf.kere.us.kg';
-    const requestedPath = url.pathname; // Path yang diminta
-	// Lakukan pemrosesan atau log lainnya tanpa respons ke klien
+// Lakukan pemrosesan atau log lainnya tanpa respons ke klien
     const page = parseInt(url.searchParams.get('page')) || 1;
     const searchQuery = url.searchParams.get('search') || '';
     const selectedWildcard = url.searchParams.get('wildcard') || '';
@@ -2888,7 +2857,7 @@ async function generateClashSub(type, bug, wildcrd, tls, country = null, limit =
   }
   
   let conf = '';
-  let bex = '';
+  let bmkg= '';
   let count = 1;
   
   for (let line of ips) {
@@ -2903,7 +2872,7 @@ async function generateClashSub(type, bug, wildcrd, tls, country = null, limit =
     const snio = tls ? `\n  servername: ${wildcrd}` : '';
     const snioo = tls ? `\n  cipher: auto` : '';
     if (type === 'vless') {
-      bex += `  - ${ispName}\n`
+      bmkg+= `  - ${ispName}\n`
       conf += `
 - name: ${ispName}
   server: ${bug}
@@ -2919,7 +2888,7 @@ async function generateClashSub(type, bug, wildcrd, tls, country = null, limit =
     headers:
       Host: ${wildcrd}`;
     } else if (type === 'trojan') {
-      bex += `  - ${ispName}\n`
+      bmkg+= `  - ${ispName}\n`
       conf += `
 - name: ${ispName}
   server: ${bug}
@@ -2935,7 +2904,7 @@ async function generateClashSub(type, bug, wildcrd, tls, country = null, limit =
     headers:
       Host: ${wildcrd}`;
     } else if (type === 'ss') {
-      bex += `  - ${ispName}\n`
+      bmkg+= `  - ${ispName}\n`
       conf += `
 - name: ${ispName}
   type: ss
@@ -2955,7 +2924,7 @@ async function generateClashSub(type, bug, wildcrd, tls, country = null, limit =
     headers:
       custom: ${wildcrd}`;
     } else if (type === 'mix') {
-      bex += `  - ${ispName} vless\n  - ${ispName} trojan\n  - ${ispName} ss\n`;
+      bmkg+= `  - ${ispName} vless\n  - ${ispName} trojan\n  - ${ispName} ss\n`;
       conf += `
 - name: ${ispName} vless
   server: ${bug}
@@ -3141,7 +3110,7 @@ proxy-groups:
   disable-udp: true
   proxies:
   - BEST-PING
-${bex}- name: ADS
+${bmkg}- name: ADS
   type: select
   disable-udp: false
   proxies:
@@ -3152,7 +3121,7 @@ ${bex}- name: ADS
   url: https://detectportal.firefox.com/success.txt
   interval: 60
   proxies:
-${bex}rule-providers:
+${bmkg}rule-providers:
   rule_hijacking:
     type: file
     behavior: classical
@@ -3205,7 +3174,7 @@ async function generateSurfboardSub(type, bug, wildcrd, tls, country = null, lim
     ips = ips.slice(0, limit); // Batasi jumlah proxy berdasarkan limit
   }
   let conf = '';
-  let bex = '';
+  let bmkg= '';
   let count = 1;
   
   for (let line of ips) {
@@ -3217,7 +3186,7 @@ async function generateSurfboardSub(type, bug, wildcrd, tls, country = null, lim
     let ispName = sanitize(`${emojiFlag} (${line.split(',')[2]}) ${line.split(',')[3]} ${count ++}`);
     const UUIDS = `${generateUUIDv4()}`;
     if (type === 'trojan') {
-      bex += `${ispName},`
+      bmkg+= `${ispName},`
       conf += `
 ${ispName} = trojan, ${bug}, 443, password = ${UUIDS}, udp-relay = true, skip-cert-verify = true, sni = ${wildcrd}, ws = true, ws-path = /${proxyHost}:${proxyPort}, ws-headers = Host:"${wildcrd}"\n`;
     }
@@ -3231,10 +3200,10 @@ dns-server = system, 108.137.44.39, 108.137.44.9, puredns.org:853
 ${conf}
 
 [Proxy Group]
-Select Group = select,Load Balance,Best Ping,FallbackGroup,${bex}
-Load Balance = load-balance,${bex}
-Best Ping = url-test,${bex} url=http://www.gstatic.com/generate_204, interval=600, tolerance=100, timeout=5
-FallbackGroup = fallback,${bex} url=http://www.gstatic.com/generate_204, interval=600, timeout=5
+Select Group = select,Load Balance,Best Ping,FallbackGroup,${bmkg}
+Load Balance = load-balance,${bmkg}
+Best Ping = url-test,${bmkg} url=http://www.gstatic.com/generate_204, interval=600, tolerance=100, timeout=5
+FallbackGroup = fallback,${bmkg} url=http://www.gstatic.com/generate_204, interval=600, timeout=5
 AdBlock = select,REJECT,Select Group
 
 [Rule]
@@ -3573,7 +3542,7 @@ async function generateHusiSub(type, bug, wildcrd, tls, country = null, limit = 
     ips = ips.slice(0, limit); // Batasi jumlah proxy berdasarkan limit
   }
   let conf = '';
-  let bex = '';
+  let bmkg= '';
   let count = 1;
   
   for (let line of ips) {
@@ -3587,7 +3556,7 @@ async function generateHusiSub(type, bug, wildcrd, tls, country = null, limit = 
     const ports = tls ? '443' : '80';
     const snio = tls ? `\n      "tls": {\n        "disable_sni": false,\n        "enabled": true,\n        "insecure": true,\n        "server_name": "${wildcrd}"\n      },` : '';
     if (type === 'vless') {
-      bex += `        "${ispName}",\n`
+      bmkg+= `        "${ispName}",\n`
       conf += `
     {
       "domain_strategy": "ipv4_only",
@@ -3614,7 +3583,7 @@ async function generateHusiSub(type, bug, wildcrd, tls, country = null, limit = 
       "uuid": "${UUIDS}"
     },`;
     } else if (type === 'trojan') {
-      bex += `        "${ispName}",\n`
+      bmkg+= `        "${ispName}",\n`
       conf += `
     {
       "domain_strategy": "ipv4_only",
@@ -3639,7 +3608,7 @@ async function generateHusiSub(type, bug, wildcrd, tls, country = null, limit = 
       "type": "trojan"
     },`;
     } else if (type === 'ss') {
-      bex += `        "${ispName}",\n`
+      bmkg+= `        "${ispName}",\n`
       conf += `
     {
       "type": "shadowsocks",
@@ -3652,7 +3621,7 @@ async function generateHusiSub(type, bug, wildcrd, tls, country = null, limit = 
       "plugin_opts": "mux=0;path=/${proxyHost}-${proxyPort};host=${wildcrd};tls=1"
     },`;
     } else if (type === 'mix') {
-      bex += `        "${ispName} vless",\n        "${ispName} trojan",\n        "${ispName} ss",\n`
+      bmkg+= `        "${ispName} vless",\n        "${ispName} trojan",\n        "${ispName} ss",\n`
       conf += `
     {
       "domain_strategy": "ipv4_only",
@@ -3815,7 +3784,7 @@ async function generateHusiSub(type, bug, wildcrd, tls, country = null, limit = 
     {
       "outbounds": [
         "Best Latency",
-${bex}        "direct"
+${bmkg}        "direct"
       ],
       "tag": "Internet",
       "type": "selector"
@@ -3823,7 +3792,7 @@ ${bex}        "direct"
     {
       "interval": "1m0s",
       "outbounds": [
-${bex}        "direct"
+${bmkg}        "direct"
       ],
       "tag": "Best Latency",
       "type": "urltest",
@@ -3911,7 +3880,7 @@ async function generateSingboxSub(type, bug, wildcrd, tls, country = null, limit
     ips = ips.slice(0, limit); // Batasi jumlah proxy berdasarkan limit
   }
   let conf = '';
-  let bex = '';
+  let bmkg= '';
   let count = 1;
   
   for (let line of ips) {
@@ -3925,7 +3894,7 @@ async function generateSingboxSub(type, bug, wildcrd, tls, country = null, limit
     const ports = tls ? '443' : '80';
     const snio = tls ? `\n      "tls": {\n        "enabled": true,\n        "server_name": "${wildcrd}",\n        "insecure": true\n      },` : '';
     if (type === 'vless') {
-      bex += `        "${ispName}",\n`
+      bmkg+= `        "${ispName}",\n`
       conf += `
     {
       "type": "vless",
@@ -3949,7 +3918,7 @@ async function generateSingboxSub(type, bug, wildcrd, tls, country = null, limit
       "packet_encoding": "xudp"
     },`;
     } else if (type === 'trojan') {
-      bex += `        "${ispName}",\n`
+      bmkg+= `        "${ispName}",\n`
       conf += `
     {
       "type": "trojan",
@@ -3972,7 +3941,7 @@ async function generateSingboxSub(type, bug, wildcrd, tls, country = null, limit
       }
     },`;
     } else if (type === 'ss') {
-      bex += `        "${ispName}",\n`
+      bmkg+= `        "${ispName}",\n`
       conf += `
     {
       "type": "shadowsocks",
@@ -3985,7 +3954,7 @@ async function generateSingboxSub(type, bug, wildcrd, tls, country = null, limit
       "plugin_opts": "mux=0;path=/${proxyHost}-${proxyPort};host=${wildcrd};tls=1"
     },`;
     } else if (type === 'mix') {
-      bex += `        "${ispName} vless",\n        "${ispName} trojan",\n        "${ispName} ss",\n`
+      bmkg+= `        "${ispName} vless",\n        "${ispName} trojan",\n        "${ispName} ss",\n`
       conf += `
     {
       "type": "vless",
@@ -4105,14 +4074,14 @@ async function generateSingboxSub(type, bug, wildcrd, tls, country = null, limit
       "type": "selector",
       "outbounds": [
         "Best Latency",
-${bex}        "direct"
+${bmkg}        "direct"
       ]
     },
     {
       "type": "urltest",
       "tag": "Best Latency",
       "outbounds": [
-${bex}        "direct"
+${bmkg}        "direct"
       ],
       "url": "https://ping.wildcrd.us.kg",
       "interval": "30s"
@@ -4203,7 +4172,7 @@ async function generateNekoboxSub(type, bug, wildcrd, tls, country = null, limit
     ips = ips.slice(0, limit); // Batasi jumlah proxy berdasarkan limit
   }
   let conf = '';
-  let bex = '';
+  let bmkg= '';
   let count = 1;
   
   for (let line of ips) {
@@ -4217,7 +4186,7 @@ async function generateNekoboxSub(type, bug, wildcrd, tls, country = null, limit
     const ports = tls ? '443' : '80';
     const snio = tls ? `\n      "tls": {\n        "disable_sni": false,\n        "enabled": true,\n        "insecure": true,\n        "server_name": "${wildcrd}"\n      },` : '';
     if (type === 'vless') {
-      bex += `        "${ispName}",\n`
+      bmkg+= `        "${ispName}",\n`
       conf += `
     {
       "domain_strategy": "ipv4_only",
@@ -4244,7 +4213,7 @@ async function generateNekoboxSub(type, bug, wildcrd, tls, country = null, limit
       "uuid": "${UUIDS}"
     },`;
     } else if (type === 'trojan') {
-      bex += `        "${ispName}",\n`
+      bmkg+= `        "${ispName}",\n`
       conf += `
     {
       "domain_strategy": "ipv4_only",
@@ -4269,7 +4238,7 @@ async function generateNekoboxSub(type, bug, wildcrd, tls, country = null, limit
       "type": "trojan"
     },`;
     } else if (type === 'ss') {
-      bex += `        "${ispName}",\n`
+      bmkg+= `        "${ispName}",\n`
       conf += `
     {
       "type": "shadowsocks",
@@ -4282,7 +4251,7 @@ async function generateNekoboxSub(type, bug, wildcrd, tls, country = null, limit
       "plugin_opts": "mux=0;path=/${proxyHost}-${proxyPort};host=${wildcrd};tls=1"
     },`;
     } else if (type === 'mix') {
-      bex += `        "${ispName} vless",\n        "${ispName} trojan",\n        "${ispName} ss",\n`
+      bmkg+= `        "${ispName} vless",\n        "${ispName} trojan",\n        "${ispName} ss",\n`
       conf += `
     {
       "domain_strategy": "ipv4_only",
@@ -4436,7 +4405,7 @@ async function generateNekoboxSub(type, bug, wildcrd, tls, country = null, limit
     {
       "outbounds": [
         "Best Latency",
-${bex}        "direct"
+${bmkg}        "direct"
       ],
       "tag": "Internet",
       "type": "selector"
@@ -4444,7 +4413,7 @@ ${bex}        "direct"
     {
       "interval": "1m0s",
       "outbounds": [
-${bex}        "direct"
+${bmkg}        "direct"
       ],
       "tag": "Best Latency",
       "type": "urltest",
