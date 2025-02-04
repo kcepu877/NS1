@@ -864,7 +864,7 @@ async function handleWebRequest(request) {
                     pathCounters[countryCode] = 1;
                 }
 
-                const path = `/${countryCode}${pathCounters[countryCode]}`;
+                const path = `/Project-Free-Proxy-bmkg${countryCode}${pathCounters[countryCode]}`;
                 pathCounters[countryCode]++;
 
                 // **Perubahan Minimal:** Memastikan setiap path menyimpan `ip:port`
