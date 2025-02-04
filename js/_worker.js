@@ -847,36 +847,42 @@ async function handleSubRequest(hostnem) {
 return html
 }
 
-async function handleWebRequest(request) {
-    const apiUrl = proxyListURL;
 
-    const fetchConfigs = async () => {
-        try {
-            const response = await fetch(apiUrl);
-            const text = await response.text();
-            
-            let pathCounters = {};
+                const fetchConfigs = async () => {
+    try {
+        const response = await fetch(apiUrl);
+        const text = await response.text();
 
-            const configs = text.trim().split('\n').map((line) => {
-                const [ip, port, countryCode, isp] = line.split(',');
+        let pathCounters = {};
+        let pathToIpPortMapping = {};  // Menyimpan mapping antara path dan ip-port
 
-                if (!pathCounters[countryCode]) {
-                    pathCounters[countryCode] = 1;
-                }
+        const configs = text.trim().split('\n').map((line) => {
+            const [ip, port, countryCode, isp] = line.split(',');
 
-                const path = `/Project-Free-Proxy-bmkg${countryCode}${pathCounters[countryCode]}`;
-                pathCounters[countryCode]++;
+            if (!pathCounters[countryCode]) {
+                pathCounters[countryCode] = 1;
+            }
 
-                // **Perubahan Minimal:** Memastikan setiap path menyimpan `ip:port`
-                return { ip, port, countryCode, isp, path, ipPort: `${ip}-${port}` };
-            });
+            const path = `/Project-Free-Proxy-bmkg${countryCode}${pathCounters[countryCode]}`;
+            pathCounters[countryCode]++;
 
-            return configs;
-        } catch (error) {
-            console.error('Error fetching configurations:', error);
-            return [];
-        }
-    };
+            // Menambahkan mapping antara path dan ip-port
+            pathToIpPortMapping[path] = `${ip}-${port}`;
+
+            return { ip, port, countryCode, isp, path, ipPort: `${ip}-${port}` };
+        });
+
+        // Setelah mendapatkan semua path, kamu bisa menggunakan pathToIpPortMapping
+        // Untuk mengecek apakah sebuah path mengandung ip-port yang sesuai
+        console.log(pathToIpPortMapping);
+
+        return configs;
+    } catch (error) {
+        console.error('Error fetching configurations:', error);
+        return [];
+    }
+};
+
 
    
 
