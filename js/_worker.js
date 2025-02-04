@@ -905,7 +905,7 @@ async function handleWebRequest(request) {
     } else {
         return new Response('Path not found', { status: 404 });
     }
-}
+
 
 
 
