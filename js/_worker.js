@@ -864,8 +864,11 @@ const fetchConfigs = async () => {
             const path = `/free-vpn-${countryCode}${pathCounters[countryCode]}`;
             pathCounters[countryCode]++;
 
-            // **Perubahan Minimal**: Path sekarang langsung menyimpan ip:port
-            return { ip, port, countryCode, isp, path, ipPort: `${ip}-${port}` };
+            const ipPort = `${ip}-${port}`;
+            
+            console.log(`Generated path: ${path} -> ${ipPort}`); // Cek apakah path benar
+
+            return { ip, port, countryCode, isp, path, ipPort };
         });
 
         return configs;
@@ -874,6 +877,7 @@ const fetchConfigs = async () => {
         return [];
     }
 };
+
 
 
    
