@@ -847,36 +847,34 @@ async function handleSubRequest(hostnem) {
 return html
 }
 
-async function handleWebRequest(request) {
-    const apiUrl = proxyListURL;
+const fetchConfigs = async () => {
+    try {
+        const response = await fetch(proxyListURL);
+        const text = await response.text();
+        
+        let pathCounters = {};
 
-    const fetchConfigs = async () => {
-        try {
-            const response = await fetch(apiUrl);
-            const text = await response.text();
-            
-            let pathCounters = {};
+        const configs = text.trim().split('\n').map((line) => {
+            const [ip, port, countryCode, isp] = line.split(',');
 
-            const configs = text.trim().split('\n').map((line) => {
-                const [ip, port, countryCode, isp] = line.split(',');
+            if (!pathCounters[countryCode]) {
+                pathCounters[countryCode] = 1;
+            }
 
-                if (!pathCounters[countryCode]) {
-                    pathCounters[countryCode] = 1;
-                }
+            const path = `/free-vpn-${countryCode}${pathCounters[countryCode]}`;
+            pathCounters[countryCode]++;
 
-                const path = `/Project-Free-Proxy-bmkg${countryCode}${pathCounters[countryCode]}`;
-                pathCounters[countryCode]++;
+            // **Perubahan Minimal**: Path sekarang langsung menyimpan ip:port
+            return { ip, port, countryCode, isp, path, ipPort: `${ip}-${port}` };
+        });
 
-                // **Perubahan Minimal:** Memastikan setiap path menyimpan `ip:port`
-                return { ip, port, countryCode, isp, path, ipPort: `${ip}-${port}` };
-            });
+        return configs;
+    } catch (error) {
+        console.error('Error fetching configurations:', error);
+        return [];
+    }
+};
 
-            return configs;
-        } catch (error) {
-            console.error('Error fetching configurations:', error);
-            return [];
-        }
-    };
 
    
 
