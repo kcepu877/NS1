@@ -855,35 +855,60 @@ async function handleWebRequest(request) {
         const response = await fetch(apiUrl);
         const text = await response.text();
 
+        if (!text) {
+            throw new Error('Empty response from API');
+        }
+
         let pathCounters = {};
         let pathToIpPortMapping = {};  // Menyimpan mapping antara path dan ip-port
 
-        const configs = text.trim().split('\n').map((line) => {
+        const configs = text.trim().split('\n').map((line, index) => {
+            // Pastikan data baris tidak kosong
+            if (!line.trim()) {
+                console.warn(`Empty line at index ${index + 1}`);
+                return null;
+            }
+
             const [ip, port, countryCode, isp] = line.split(',');
+
+            // Cek jika data baris tidak valid
+            if (!ip || !port || !countryCode || !isp) {
+                console.error(`Invalid line at index ${index + 1}:`, line);
+                return null;
+            }
 
             if (!pathCounters[countryCode]) {
                 pathCounters[countryCode] = 1;
             }
 
+            // Membuat path berdasarkan countryCode dan counter
             const path = `/Project-Free-Proxy-bmkg${countryCode}${pathCounters[countryCode]}`;
             pathCounters[countryCode]++;
 
-            // Menambahkan mapping antara path dan ip-port
+            // Menambahkan mapping path ke ip-port
             pathToIpPortMapping[path] = `${ip}-${port}`;
 
             return { ip, port, countryCode, isp, path, ipPort: `${ip}-${port}` };
-        });
+        }).filter(Boolean);  // Hapus data null
 
-        // Setelah mendapatkan semua path, kamu bisa menggunakan pathToIpPortMapping
-        // Untuk mengecek apakah sebuah path mengandung ip-port yang sesuai
-        console.log(pathToIpPortMapping);
+        // Fungsi untuk mendapatkan ip-port dari path
+        const getIpPortFromPath = (requestedPath) => {
+            const ipPort = pathToIpPortMapping[requestedPath];
+            return ipPort ? ipPort : 'Path not found';
+        };
 
+        // Debug: Tampilkan path-to-ip-port mapping
+        console.log('Path to IP-Port Mapping:', pathToIpPortMapping);
+
+        // Contoh penggunaan getIpPortFromPath
+        
         return configs;
     } catch (error) {
         console.error('Error fetching configurations:', error);
         return [];
     }
 };
+
 
 
    
