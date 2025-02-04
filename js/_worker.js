@@ -889,9 +889,7 @@ async function fetchConfigs() {
 
 // Handler utama untuk menerima request
 async function handleWebRequest(request) {
-    const url = new URL(request.url);
-    const requestedPath = url.pathname; // Path yang diminta
-
+    
     console.log(`Requested Path: ${requestedPath}`);
 
     // Pastikan konfigurasi sudah di-fetch sebelum digunakan
@@ -955,7 +953,8 @@ function buildCountryFlag() {
     const url = new URL(request.url);
     const hostNameFromRequest = url.hostname;
     const hostName = 'freecf.kere.us.kg';
-// Lakukan pemrosesan atau log lainnya tanpa respons ke klien
+    const requestedPath = url.pathname; // Path yang diminta
+	// Lakukan pemrosesan atau log lainnya tanpa respons ke klien
     const page = parseInt(url.searchParams.get('page')) || 1;
     const searchQuery = url.searchParams.get('search') || '';
     const selectedWildcard = url.searchParams.get('wildcard') || '';
