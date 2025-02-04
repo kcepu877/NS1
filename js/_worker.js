@@ -847,38 +847,36 @@ async function handleSubRequest(hostnem) {
 return html
 }
 
-const fetchConfigs = async () => {
-    try {
-        const response = await fetch(proxyListURL);
-        const text = await response.text();
-        
-        let pathCounters = {};
+async function handleWebRequest(request) {
+    const apiUrl = proxyListURL;
 
-        const configs = text.trim().split('\n').map((line) => {
-            const [ip, port, countryCode, isp] = line.split(',');
-
-            if (!pathCounters[countryCode]) {
-                pathCounters[countryCode] = 1;
-            }
-
-            const path = `/free-vpn-${countryCode}${pathCounters[countryCode]}`;
-            pathCounters[countryCode]++;
-
-            const ipPort = `${ip}-${port}`;
+    const fetchConfigs = async () => {
+        try {
+            const response = await fetch(apiUrl);
+            const text = await response.text();
             
-            console.log(`Generated path: ${path} -> ${ipPort}`); // Cek apakah path benar
+            let pathCounters = {};
 
-            return { ip, port, countryCode, isp, path, ipPort };
-        });
+            const configs = text.trim().split('\n').map((line) => {
+                const [ip, port, countryCode, isp] = line.split(',');
 
-        return configs;
-    } catch (error) {
-        console.error('Error fetching configurations:', error);
-        return [];
-    }
-};
+                if (!pathCounters[countryCode]) {
+                    pathCounters[countryCode] = 1;
+                }
 
+                const path = `/Project-Free-Proxy-bmkg${countryCode}${pathCounters[countryCode]}`;
+                pathCounters[countryCode]++;
 
+                // **Perubahan Minimal:** Memastikan setiap path menyimpan `ip:port`
+                return { ip, port, countryCode, isp, path, ipPort: `${ip}-${port}` };
+            });
+
+            return configs;
+        } catch (error) {
+            console.error('Error fetching configurations:', error);
+            return [];
+        }
+    };
 
    
 
