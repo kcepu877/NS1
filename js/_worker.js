@@ -847,6 +847,8 @@ async function handleSubRequest(hostnem) {
 return html
 }
 
+async function handleWebRequest(request) {
+    const apiUrl = proxyListURL;
 
                 const fetchConfigs = async () => {
     try {
