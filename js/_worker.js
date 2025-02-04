@@ -847,12 +847,12 @@ async function handleSubRequest(hostnem) {
 return html
 }
 
-async function handleWebRequest(request) {
-    const apiUrl = proxyListURL;
+let pathToIpPortMapping = {}; // Pindahkan ke luar agar bisa diakses oleh handleWebRequest
+let isConfigFetched = false; // Untuk memastikan fetchConfigs hanya dipanggil sekali
 
-                const fetchConfigs = async () => {
+async function fetchConfigs() {
     try {
-        const response = await fetch(apiUrl);
+        const response = await fetch(proxyListURL);
         const text = await response.text();
 
         if (!text) {
@@ -860,54 +860,53 @@ async function handleWebRequest(request) {
         }
 
         let pathCounters = {};
-        let pathToIpPortMapping = {};  // Menyimpan mapping antara path dan ip-port
+        pathToIpPortMapping = {}; // Reset mapping sebelum diisi ulang
 
-        const configs = text.trim().split('\n').map((line, index) => {
-            // Pastikan data baris tidak kosong
-            if (!line.trim()) {
-                console.warn(`Empty line at index ${index + 1}`);
-                return null;
-            }
+        text.trim().split('\n').forEach((line, index) => {
+            if (!line.trim()) return;
 
             const [ip, port, countryCode, isp] = line.split(',');
 
-            // Cek jika data baris tidak valid
-            if (!ip || !port || !countryCode || !isp) {
-                console.error(`Invalid line at index ${index + 1}:`, line);
-                return null;
-            }
+            if (!ip || !port || !countryCode || !isp) return;
 
             if (!pathCounters[countryCode]) {
                 pathCounters[countryCode] = 1;
             }
 
-            // Membuat path berdasarkan countryCode dan counter
             const path = `/Project-Free-Proxy-bmkg${countryCode}${pathCounters[countryCode]}`;
             pathCounters[countryCode]++;
 
-            // Menambahkan mapping path ke ip-port
+            // Simpan mapping path ke ip-port
             pathToIpPortMapping[path] = `${ip}-${port}`;
+        });
 
-            return { ip, port, countryCode, isp, path, ipPort: `${ip}-${port}` };
-        }).filter(Boolean);  // Hapus data null
-
-        // Fungsi untuk mendapatkan ip-port dari path
-        const getIpPortFromPath = (requestedPath) => {
-            const ipPort = pathToIpPortMapping[requestedPath];
-            return ipPort ? ipPort : 'Path not found';
-        };
-
-        // Debug: Tampilkan path-to-ip-port mapping
+        isConfigFetched = true; // Tandai bahwa konfigurasi sudah di-fetch
         console.log('Path to IP-Port Mapping:', pathToIpPortMapping);
-
-        // Contoh penggunaan getIpPortFromPath
-        
-        return configs;
     } catch (error) {
         console.error('Error fetching configurations:', error);
-        return [];
     }
-};
+}
+
+// Handler utama untuk menerima request
+async function handleWebRequest(request) {
+    const url = new URL(request.url);
+    const requestedPath = url.pathname; // Path yang diminta
+
+    console.log(`Requested Path: ${requestedPath}`);
+
+    // Pastikan konfigurasi sudah di-fetch sebelum digunakan
+    if (!isConfigFetched) {
+        await fetchConfigs();
+    }
+
+    // Cek apakah path ada dalam mapping
+    if (pathToIpPortMapping[requestedPath]) {
+        return new Response(pathToIpPortMapping[requestedPath]);
+    } else {
+        return new Response('Path not found', { status: 404 });
+    }
+}
+
 
 
 
