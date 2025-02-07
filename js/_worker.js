@@ -75,7 +75,7 @@ export default {
     try {
       const url = new URL(request.url);
       const upgradeHeader = request.headers.get("Upgrade");
-      const CHECK_API_BASE = "https://check.installer.us.kg"; // Get base URL from secrets
+      const CHECK_API_BASE = "https://api.installer.us.kg"; // Get base URL from secrets
       const CHECK_API = `${CHECK_API_BASE}/check?ip=`;
       
       // Handle IP check
