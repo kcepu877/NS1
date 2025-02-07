@@ -79,7 +79,7 @@ export default {
       const CHECK_API = `${CHECK_API_BASE}/check?ip=`;
       
       // Handle IP check
-      if (url.pathname === "/check-ip") {
+      if (url.pathname === "/geo-ip") {
         const ip = url.searchParams.get("ip");
 
         if (!ip) {
