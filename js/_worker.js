@@ -79,7 +79,7 @@ export default {
       const CHECK_API = `${CHECK_API_BASE}/check?ip=`;
       
       // Handle IP check
-      if (url.pathname === "/geo-ip") {
+      if (url.pathname === "/check-ip") {
         const ip = url.searchParams.get("ip");
 
         if (!ip) {
@@ -1017,7 +1017,7 @@ function buildCountryFlag() {
             console.log("Raw delay:", data.delay); // Debugging log
             console.log("Parsed delay:", delay);  // Debugging log
 
-            const divisor = 4; // Ubah sesuai kebutuhan
+            const divisor = 10; // Ubah sesuai kebutuhan
 
             if (!isNaN(delay)) {
                 delay = Math.round(delay / divisor);
@@ -1091,7 +1091,7 @@ function buildCountryFlag() {
             console.log("Raw delay:", data.delay); // Debugging log
             console.log("Parsed delay:", delay);  // Debugging log
 
-            const divisor = 4; // Ubah sesuai kebutuhan
+            const divisor = 10; // Ubah sesuai kebutuhan
 
             if (!isNaN(delay)) {
                 delay = Math.round(delay / divisor);
