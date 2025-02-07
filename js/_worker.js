@@ -1017,7 +1017,7 @@ function buildCountryFlag() {
             console.log("Raw delay:", data.delay); // Debugging log
             console.log("Parsed delay:", delay);  // Debugging log
 
-            const divisor = 10; // Ubah sesuai kebutuhan
+            const divisor = 20; // Ubah sesuai kebutuhan
 
             if (!isNaN(delay)) {
                 delay = Math.round(delay / divisor);
@@ -1091,7 +1091,7 @@ function buildCountryFlag() {
             console.log("Raw delay:", data.delay); // Debugging log
             console.log("Parsed delay:", delay);  // Debugging log
 
-            const divisor = 10; // Ubah sesuai kebutuhan
+            const divisor = 20; // Ubah sesuai kebutuhan
 
             if (!isNaN(delay)) {
                 delay = Math.round(delay / divisor);
