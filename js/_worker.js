@@ -79,7 +79,7 @@ export default {
       const CHECK_API = `${CHECK_API_BASE}/check?ip=`;
       
       // Handle IP check
-      if (url.pathname === "/geo-ip") {
+      if (url.pathname === "/check") {
         const ip = url.searchParams.get("ip");
 
         if (!ip) {
@@ -968,7 +968,7 @@ function buildCountryFlag() {
         const modifiedHostName = selectedWildcard ? `${selectedWildcard}.${hostName}` : hostName;
         const url = new URL(request.url);
        const BASE_URL = `https://${url.hostname}`; 
-       const CHECK_API = `${BASE_URL}/geo-ip?ip=`; 
+       const CHECK_API = `${BASE_URL}/check?ip=`; 
         const ipPort = `${config.ip}:${config.port}`;
         const healthCheckUrl = `${CHECK_API}${ipPort}`;
 
