@@ -982,7 +982,7 @@ function buildCountryFlag() {
             </div>
                         </td>
                                         
-                    <td class="proxy-status" id="status-${ipPort}"><strong><i class="fas fa-spinner fa-spin loading-icon"></i></strong><div class="rainbow-text">LOADING...</div></td>
+                    <td class="proxy-status" id="status-${ipPort}"><strong><i class="fas fa-spinner fa-spin loading-icon"></i></strong><div class="warna-text">Loading...</div></td>
 
                     
                     <td class="button-cell">
@@ -1003,35 +1003,41 @@ function buildCountryFlag() {
                 </tr>
 
 
-            <script>
+<script>
     fetch('${healthCheckUrl}', { cache: 'no-store', keepalive: true })
         .then(response => response.json())
         .then(data => {
             const statusElement = document.getElementById('status-${ipPort}');
             const spinner = document.getElementById('ping-' + data.proxy + ':' + data.port);
 
-            // Ambil data status dan delay (latency)
+            // Ambil data status
             const status = data.status || 'UNKNOWN';
-            let delay = parseFloat(data.latency) || 'N/A';  // Menggunakan latency yang diberikan oleh API
+            let delay = data.delay || 'N/A';  // Ambil delay yang sudah diproses dari API
 
             console.log("Status:", status);  // Debugging log
-            console.log("Raw latency:", data.latency); // Debugging log
-            console.log("Parsed latency:", delay);  // Debugging log
+            console.log("Raw delay:", delay); // Debugging log
 
-            const divisor = 40;  // Ubah sesuai kebutuhan
+            const divisor = 1;  // Ubah sesuai kebutuhan
 
-            if (delay !== 'N/A' && !isNaN(delay)) {
-                delay = Math.round(delay / divisor);  // Proses latensi agar sesuai dengan skala yang diinginkan
-                console.log("Processed latency:", delay);  // Debugging log
+            if (delay !== 'N/A') {
+                // Hapus "ms" dan ubah menjadi angka
+                delay = parseFloat(delay.replace("ms", "").trim());
+
+                if (!isNaN(delay)) {
+                    delay = Math.round(delay / divisor) + ".ms";  // Perkecil latensi dan tambahkan satuan kembali
+                    console.log("Processed latency:", delay);  // Debugging log
+                } else {
+                    delay = "N/A";
+                }
             }
 
             // Memperbarui elemen berdasarkan status
-            if (status === 'ACTIVE') {
-                statusElement.innerHTML = '<i class="fas fa-bolt"></i>&nbsp;<span style="color: gold;">(' + delay + 'ms)</span>';
+            if (status === 'ACTIVE ✅') {
+                statusElement.innerHTML = '<i class="fas fa-bolt"></i>&nbsp;<span style="color: gold;">(' + delay + ')</span>';
                 statusElement.style.color = '#00FF00';  // Hijau
                 statusElement.style.fontSize = '13px';
                 statusElement.style.fontWeight = 'bold';
-            } else if (status === 'DEAD') {
+            } else if (status === 'DEAD ❌') {
                 statusElement.innerHTML = '<strong><i class="fas fa-times-circle"></i> DEAD</strong>';
                 statusElement.style.color = '#FF3333';  // Merah
                 statusElement.style.fontSize = '13px';
@@ -1072,7 +1078,7 @@ function buildCountryFlag() {
             <span class="flag-circle flag-icon flag-icon-${config.countryCode.toLowerCase()}"></span>
             </div>
                         </td>
-                    <td class="proxy-status" id="status-${ipPort}"><strong><i class="fas fa-spinner fa-spin loading-icon"></i></strong><div class="rainbow-text">LOADING...</div></td>
+                    <td class="proxy-status" id="status-${ipPort}"><strong><i class="fas fa-spinner fa-spin loading-icon"></i></strong><div class="warna-text">Loading...</div></td>
                     
                     <td class="button-cell">
                         <button class="px-3 py-1 bg-gradient-to-r from-[#bdc74d] to-[#bdc74d] text-black font-semibold border-0 rounded-md transform transition hover:scale-105" onclick="copy('${`vless://${uuid}@${wildcard}:80?path=${encodeURIComponent(config.path.toUpperCase())}&security=none&encryption=none&host=${modifiedHostName}&fp=randomized&type=ws&sni=${modifiedHostName}#(${config.countryCode})%20${config.isp.replace(/\s/g,'%20')}${getFlagEmoji(config.countryCode)}`}')">
@@ -1090,6 +1096,7 @@ function buildCountryFlag() {
                         </button>
                     </td>
                 </tr>
+
 <script>
     fetch('${healthCheckUrl}', { cache: 'no-store', keepalive: true })
         .then(response => response.json())
@@ -1097,28 +1104,34 @@ function buildCountryFlag() {
             const statusElement = document.getElementById('status-${ipPort}');
             const spinner = document.getElementById('ping-' + data.proxy + ':' + data.port);
 
-            // Ambil data status dan delay (latency)
+            // Ambil data status
             const status = data.status || 'UNKNOWN';
-            let delay = parseFloat(data.latency) || 'N/A';  // Menggunakan latency yang diberikan oleh API
+            let delay = data.delay || 'N/A';  // Ambil delay yang sudah diproses dari API
 
             console.log("Status:", status);  // Debugging log
-            console.log("Raw latency:", data.latency); // Debugging log
-            console.log("Parsed latency:", delay);  // Debugging log
+            console.log("Raw delay:", delay); // Debugging log
 
-            const divisor = 40;  // Ubah sesuai kebutuhan
+            const divisor = 1;  // Ubah sesuai kebutuhan
 
-            if (delay !== 'N/A' && !isNaN(delay)) {
-                delay = Math.round(delay / divisor);  // Proses latensi agar sesuai dengan skala yang diinginkan
-                console.log("Processed latency:", delay);  // Debugging log
+            if (delay !== 'N/A') {
+                // Hapus "ms" dan ubah menjadi angka
+                delay = parseFloat(delay.replace("ms", "").trim());
+
+                if (!isNaN(delay)) {
+                    delay = Math.round(delay / divisor) + ".ms";  // Perkecil latensi dan tambahkan satuan kembali
+                    console.log("Processed latency:", delay);  // Debugging log
+                } else {
+                    delay = "N/A";
+                }
             }
 
             // Memperbarui elemen berdasarkan status
-            if (status === 'ACTIVE') {
-                statusElement.innerHTML = '<i class="fas fa-bolt"></i>&nbsp;<span style="color: gold;">(' + delay + 'ms)</span>';
+            if (status === 'ACTIVE ✅') {
+                statusElement.innerHTML = '<i class="fas fa-bolt"></i>&nbsp;<span style="color: gold;">(' + delay + ')</span>';
                 statusElement.style.color = '#00FF00';  // Hijau
                 statusElement.style.fontSize = '13px';
                 statusElement.style.fontWeight = 'bold';
-            } else if (status === 'DEAD') {
+            } else if (status === 'DEAD ❌') {
                 statusElement.innerHTML = '<strong><i class="fas fa-times-circle"></i> DEAD</strong>';
                 statusElement.style.color = '#FF3333';  // Merah
                 statusElement.style.fontSize = '13px';
@@ -1223,7 +1236,35 @@ function buildCountryFlag() {
       85% { color: violet; }
       100% { color: red; }
     }
-    
+    @keyframes rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.loading-icon {
+  font-size: 40px;
+  animation: rotate 1s linear infinite;
+  color: #f00; /* default color */
+}
+
+.loading-icon:before {
+  content: '\f110'; /* spinner icon */
+  font-family: 'FontAwesome';
+  color: red;
+  animation: spinColors 1.2s linear infinite;
+}
+
+@keyframes spinColors {
+  0% { color: red; }
+  25% { color: yellow; }
+  50% { color: green; }
+  75% { color: blue; }
+  100% { color: purple; }
+}
       .spinner {
   border: 4px solid #f3f3f3; /* Light grey */
   border-top: 4px solid #3498db; /* Blue */
@@ -1257,6 +1298,25 @@ function buildCountryFlag() {
   0% { background-position: 0% 50%; }
   50% { background-position: 100% 50%; }
   100% { background-position: 0% 50%; }
+}
+@keyframes moveColors {
+  100% {
+    background-position: -200%; /* Mulai dari luar kiri */
+  }
+  0% {
+    background-position: 200%; /* Bergerak ke kanan */
+  }
+}
+
+.warna-text {
+  font-size: 20px;
+  font-weight: bold;
+  display: inline-block;
+  background: linear-gradient(90deg, red, orange, yellow, green, blue, purple);
+  background-size: 200%;
+  color: transparent;
+  -webkit-background-clip: text;
+  animation: moveColors 5s linear infinite;
 }
 
 
