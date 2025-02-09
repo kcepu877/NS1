@@ -11,7 +11,7 @@ enabled = true
 
 
 [[routes]]
-pattern = "user.kere.us.kg"
+pattern = "a.ndeso.xyz"
 custom_domain = true
 [[routes]]
 pattern = "woless.kere.us.kg"
