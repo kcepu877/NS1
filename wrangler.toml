@@ -10,9 +10,7 @@ enabled = true
 enabled = true
 
 
-[[routes]]
-pattern = "user.kere.us.kg"
-custom_domain = true
+
 [[routes]]
 pattern = "woless.kere.us.kg"
 custom_domain = true
