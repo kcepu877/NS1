@@ -164,7 +164,7 @@ export default {
         }
 
         // Match path dengan format ip:port atau ip=port
-        const ipPortMatch = url.pathname.match(/^\/(.+[:=-]\d+)$/);
+        const ipPortMatch = url.pathname.match(/^\/Free-CF-Proxy-(.+[:=-]\d+)$/);
 
         if (ipPortMatch) {
           proxyIP = ipPortMatch[1].replace(/[=:-]/, ":"); // Standarisasi menjadi ip:port
@@ -174,7 +174,7 @@ export default {
       }
 
       
-      const myhost = 'woless.kere.us.kg';
+      const myhost = 'woless.cepu.us.kg';
       const myhostName = url.hostname;
       const type = url.searchParams.get('type') || 'mix';
       const tls = url.searchParams.get('tls') !== 'false';
@@ -938,7 +938,7 @@ function buildCountryFlag() {
 
     const url = new URL(request.url);
     const hostNameFromRequest = url.hostname;
-    const hostName = 'woless.kere.us.kg';
+    const hostName = 'woless.cepu.us.kg';
 // Lakukan pemrosesan atau log lainnya tanpa respons ke klien
     const page = parseInt(url.searchParams.get('page')) || 1;
     const searchQuery = url.searchParams.get('search') || '';
