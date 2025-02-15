@@ -124,7 +124,7 @@ export default {
 
       if (upgradeHeader === "websocket") {
     // Match path dengan format /Free-CF-Proxy/CC atau /Free-CF-Proxy/CCangka
-    const pathMatch = url.pathname.match(/^\/Free-CF-Proxy-([A-Z]{2})(\d+)-LifeTime?$/);
+    const pathMatch = url.pathname.match(/^\/Free-CF-Proxy-([A-Z]{2})(\d+)?$/);
 
     if (pathMatch) {
         const countryCode = pathMatch[1];
@@ -869,7 +869,7 @@ async function handleWebRequest(request) {
                 }
 
                 // Format path tanpa "/" sebelum angka
-                const path = `/Free-CF-Proxy-${countryCode}${pathCounters[countryCode]}-LifeTime`;
+                const path = `/Free-CF-Proxy-${countryCode}${pathCounters[countryCode]}`;
                 pathCounters[countryCode]++;
 
                 return {
@@ -2949,7 +2949,7 @@ async function generateClashSub(type, bug, wildcrd, tls, country = null, limit =
     ips = randomOrder;
 } else if (country) {
     // Jika ada country code dengan format seperti Free-CF-Proxy-ID1, Free-CF-Proxy-ID2
-    const countryCodeMatch = country.match(/^Free-CF-Proxy-([A-Z]{2})(\d+)-LifeTime$/);
+    const countryCodeMatch = country.match(/^Free-CF-Proxy-([A-Z]{2})(\d+)$/);
     if (countryCodeMatch) {
         const countryCodeFromParts = countryCodeMatch[1].toUpperCase(); // Contoh: "ID"
         const index = parseInt(countryCodeMatch[2], 10) - 1; // Indeks berdasarkan angka setelah kode negara
@@ -3003,7 +3003,7 @@ if (!pathCounters[countryCodeFromParts]) {
 }
 
 // Membuat path sesuai dengan format '/Free-CF-Proxy-<countryCode><index>'
-const pathcfnegara = `/Free-CF-Proxy-${countryCodeFromParts}${pathCounters[countryCodeFromParts]}`-LifeTime;
+const pathcfnegara = `/Free-CF-Proxy-${countryCodeFromParts}${pathCounters[countryCodeFromParts]}`;
 pathCounters[countryCodeFromParts]++; // Increment untuk setiap proxy yang diproses
 
 console.log(`Path: ${pathcfnegara}, Proxy Host: ${proxyHost}, Proxy Port: ${proxyPort}`);
@@ -3308,7 +3308,7 @@ async function generateSurfboardSub(type, bug, wildcrd, tls, country = null, lim
     ips = randomOrder;
 } else if (country) {
     // Jika ada country code dengan format seperti Free-CF-Proxy-ID1, Free-CF-Proxy-ID2
-    const countryCodeMatch = country.match(/^Free-CF-Proxy-([A-Z]{2})(\d+)-LifeTime$/);
+    const countryCodeMatch = country.match(/^Free-CF-Proxy-([A-Z]{2})(\d+)$/);
     if (countryCodeMatch) {
         const countryCodeFromParts = countryCodeMatch[1].toUpperCase(); // Contoh: "ID"
         const index = parseInt(countryCodeMatch[2], 10) - 1; // Indeks berdasarkan angka setelah kode negara
@@ -3360,7 +3360,7 @@ if (!pathCounters[countryCodeFromParts]) {
 }
 
 // Membuat path sesuai dengan format '/Free-CF-Proxy-<countryCode><index>'
-const pathcfnegara = `/Free-CF-Proxy-${countryCodeFromParts}${pathCounters[countryCodeFromParts]}`-LifeTime;
+const pathcfnegara = `/Free-CF-Proxy-${countryCodeFromParts}${pathCounters[countryCodeFromParts]}`;
 pathCounters[countryCodeFromParts]++; // Increment untuk setiap proxy yang diproses
 
 console.log(`Path: ${pathcfnegara}, Proxy Host: ${proxyHost}, Proxy Port: ${proxyPort}`);
@@ -3716,7 +3716,7 @@ async function generateHusiSub(type, bug, wildcrd, tls, country = null, limit = 
     ips = randomOrder;
 } else if (country) {
     // Jika ada country code dengan format seperti Free-CF-Proxy-ID1, Free-CF-Proxy-ID2
-    const countryCodeMatch = country.match(/^Free-CF-Proxy-([A-Z]{2})(\d+)-LifeTime$/);
+    const countryCodeMatch = country.match(/^Free-CF-Proxy-([A-Z]{2})(\d+)$/);
     if (countryCodeMatch) {
         const countryCodeFromParts = countryCodeMatch[1].toUpperCase(); // Contoh: "ID"
         const index = parseInt(countryCodeMatch[2], 10) - 1; // Indeks berdasarkan angka setelah kode negara
@@ -3768,7 +3768,7 @@ if (!pathCounters[countryCodeFromParts]) {
 }
 
 // Membuat path sesuai dengan format '/Free-CF-Proxy-<countryCode><index>'
-const pathcfnegara = `/Free-CF-Proxy-${countryCodeFromParts}${pathCounters[countryCodeFromParts]}`-LifeTime;
+const pathcfnegara = `/Free-CF-Proxy-${countryCodeFromParts}${pathCounters[countryCodeFromParts]}`;
 pathCounters[countryCodeFromParts]++; // Increment untuk setiap proxy yang diproses
 
 console.log(`Path: ${pathcfnegara}, Proxy Host: ${proxyHost}, Proxy Port: ${proxyPort}`);
@@ -4094,7 +4094,7 @@ async function generateSingboxSub(type, bug, wildcrd, tls, country = null, limit
     ips = randomOrder;
 } else if (country) {
     // Jika ada country code dengan format seperti Free-CF-Proxy-ID1, Free-CF-Proxy-ID2
-    const countryCodeMatch = country.match(/^Free-CF-Proxy-([A-Z]{2})(\d+)-LifeTime$/);
+    const countryCodeMatch = country.match(/^Free-CF-Proxy-([A-Z]{2})(\d+)$/);
     if (countryCodeMatch) {
         const countryCodeFromParts = countryCodeMatch[1].toUpperCase(); // Contoh: "ID"
         const index = parseInt(countryCodeMatch[2], 10) - 1; // Indeks berdasarkan angka setelah kode negara
@@ -4146,7 +4146,7 @@ if (!pathCounters[countryCodeFromParts]) {
 }
 
 // Membuat path sesuai dengan format '/Free-CF-Proxy-<countryCode><index>'
-const pathcfnegara = `/Free-CF-Proxy-${countryCodeFromParts}${pathCounters[countryCodeFromParts]}`-LifeTime;
+const pathcfnegara = `/Free-CF-Proxy-${countryCodeFromParts}${pathCounters[countryCodeFromParts]}`;
 pathCounters[countryCodeFromParts]++; // Increment untuk setiap proxy yang diproses
 
 console.log(`Path: ${pathcfnegara}, Proxy Host: ${proxyHost}, Proxy Port: ${proxyPort}`);
@@ -4426,7 +4426,7 @@ async function generateNekoboxSub(type, bug, wildcrd, tls, country = null, limit
     ips = randomOrder;
 } else if (country) {
     // Jika ada country code dengan format seperti Free-CF-Proxy-ID1, Free-CF-Proxy-ID2
-    const countryCodeMatch = country.match(/^Free-CF-Proxy-([A-Z]{2})(\d+)-LifeTime$/);
+    const countryCodeMatch = country.match(/^Free-CF-Proxy-([A-Z]{2})(\d+)$/);
     if (countryCodeMatch) {
         const countryCodeFromParts = countryCodeMatch[1].toUpperCase(); // Contoh: "ID"
         const index = parseInt(countryCodeMatch[2], 10) - 1; // Indeks berdasarkan angka setelah kode negara
@@ -4478,7 +4478,7 @@ if (!pathCounters[countryCodeFromParts]) {
 }
 
 // Membuat path sesuai dengan format '/Free-CF-Proxy-<countryCode><index>'
-const pathcfnegara = `/Free-CF-Proxy-${countryCodeFromParts}${pathCounters[countryCodeFromParts]}`-LifeTime;
+const pathcfnegara = `/Free-CF-Proxy-${countryCodeFromParts}${pathCounters[countryCodeFromParts]}`;
 pathCounters[countryCodeFromParts]++; // Increment untuk setiap proxy yang diproses
 
 console.log(`Path: ${pathcfnegara}, Proxy Host: ${proxyHost}, Proxy Port: ${proxyPort}`);
@@ -4796,7 +4796,7 @@ async function generateV2rayngSub(type, bug, wildcrd, tls, country = null, limit
     ips = randomOrder;
 } else if (country) {
     // Jika ada country code dengan format seperti Free-CF-Proxy-ID1, Free-CF-Proxy-ID2
-    const countryCodeMatch = country.match(/^Free-CF-Proxy-([A-Z]{2})(\d+)-LifeTime$/);
+    const countryCodeMatch = country.match(/^Free-CF-Proxy-([A-Z]{2})(\d+)$/);
     if (countryCodeMatch) {
         const countryCodeFromParts = countryCodeMatch[1].toUpperCase(); // Contoh: "ID"
         const index = parseInt(countryCodeMatch[2], 10) - 1; // Indeks berdasarkan angka setelah kode negara
@@ -4848,7 +4848,7 @@ if (!pathCounters[countryCodeFromParts]) {
 }
 
 // Membuat path sesuai dengan format '/Free-CF-Proxy-<countryCode><index>'
-const pathcfnegara = `/Free-CF-Proxy-${countryCodeFromParts}${pathCounters[countryCodeFromParts]}`-LifeTime;
+const pathcfnegara = `/Free-CF-Proxy-${countryCodeFromParts}${pathCounters[countryCodeFromParts]}`;
 pathCounters[countryCodeFromParts]++; // Increment untuk setiap proxy yang diproses
 
 console.log(`Path: ${pathcfnegara}, Proxy Host: ${proxyHost}, Proxy Port: ${proxyPort}`);
@@ -4910,7 +4910,7 @@ async function generateV2raySub(type, bug, wildcrd, tls, country = null, limit =
     ips = randomOrder;
 } else if (country) {
     // Jika ada country code dengan format seperti Free-CF-Proxy-ID1, Free-CF-Proxy-ID2
-    const countryCodeMatch = country.match(/^Free-CF-Proxy-([A-Z]{2})(\d+)-LifeTime$/);
+    const countryCodeMatch = country.match(/^Free-CF-Proxy-([A-Z]{2})(\d+)$/);
     if (countryCodeMatch) {
         const countryCodeFromParts = countryCodeMatch[1].toUpperCase(); // Contoh: "ID"
         const index = parseInt(countryCodeMatch[2], 10) - 1; // Indeks berdasarkan angka setelah kode negara
@@ -4959,7 +4959,7 @@ if (!pathCounters[countryCodeFromParts]) {
 }
 
 // Membuat path sesuai dengan format '/Free-CF-Proxy-<countryCode><index>'
-const pathcfnegara = `/Free-CF-Proxy-${countryCodeFromParts}${pathCounters[countryCodeFromParts]}`-LifeTime;
+const pathcfnegara = `/Free-CF-Proxy-${countryCodeFromParts}${pathCounters[countryCodeFromParts]}`;
 pathCounters[countryCodeFromParts]++; // Increment untuk setiap proxy yang diproses
 
 console.log(`Path: ${pathcfnegara}, Proxy Host: ${proxyHost}, Proxy Port: ${proxyPort}`);
