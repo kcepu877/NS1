@@ -1027,28 +1027,41 @@ body111 {
   <main class="content">
 
     
+<div class="filters" style="display: flex; justify-content: center; align-items: center; gap: 10px; margin-top: 10px; ">
+    <span class="filter-label">Search:</span>
+    <input type="text" id="search-bar" placeholder="Search ID" style="padding: 5px; font-size: 16px;">
+</div>
+        <div style="display: flex; justify-content: center; align-items: center; gap: 5px; flex-wrap: wrap; margin-bottom: 10px;">
+    <a href="https://wa.me/6281335135082" target="_blank" rel="noopener noreferrer">
+        <img src="https://kang.cepu.us.kg/img/mobile.png" alt="menu" width="50">
+    </a>
 
-        <center><button class="button7" onclick="showPopup('sub-link')"></i>
-SHOW LINK SUB</button></center>
-<div class="filters">
-      <div><div class="button6" onclick="showPopup('menu')">
-        <img src="https://cf.cepu.us.kg/img/options.png
-" alt="menu" width="50">
+    <button onclick="showPopup('sub-link')" style="background: transparent; border: none; padding: 0;">
+        <img src="https://kang.cepu.us.kg/img/linksub.png" alt="menu" width="50" style="margin-top: 5px;">
+    </button>
+
+    <a href="https://t.me/seaker877" target="_blank" rel="noopener noreferrer">
+        <img src="https://kere.us.kg/img/tele.png" alt="menu" width="50">
+    </a>
+
+    <a href="https://t.me/kcepu_bot" target="_blank" rel="noopener noreferrer">
+        <img src="https://kere.us.kg/img/bot.png" alt="menu" width="50">
+    </a>
+<span>Page:</span>
+    <select id="items-per-page" style="font-family: 'Rajdhani', sans-serif; padding: 10px;">
+        <option value="10">10/Page</option>
+        <option value="25">25/Page</option>
+        <option value="50">50/Page</option>
+        <option value="100">100/Page</option>
+        <option value="250">250/Page</option>
+  </select>
 </div>
-</div><div>
-<span class="filter-label">Page:</span>
-<select class="service-selector" id="items-per-page">
-  <option value="10">10</option>
-  <option value="25">25</option>
-  <option value="50">50</option>
-  <option value="100">100</option>
-</select>
-</div>
-      <div>
-<span class="filter-label">Search:</span>
-<input type="text" id="search-bar" placeholder="Search ID" />
-</div>
-</div>
+  <div><center><span>Untuk menghindari penjualan config gratisan maka akan di lakukan pembaruan konfig secara otomatis setiap hari minggu. dan pastikan anda memperharui konfig anda secara berkala</span>
+    </span></center></div><br/><br>
+
+
+
+
     
       <div class="table-container">
     <table>
@@ -1070,25 +1083,7 @@ SHOW LINK SUB</button></center>
  <div class="pagination" id="pagination"></div>
   </div> 
 
-    <div class="popupnav" id="menu">
-<div class="popup-content">
-  <span style="font-family: 'Rajdhani', sans-serif;">CONTACT ADMIN UNTUK ORDER PREMIUM</span>
-  <hr/><br><span class="menu">
     
-        <span>Untuk menghindari penjualan config gratisan maka akan di lakukan pembaruan konfig secara otomatis setiap hari minggu. dan pastikan anda memperharui konfig anda secara berkala</span>
-    </span>
-  <span class="menu">
-    <a href="https://t.me/kcepu877" target="_blank" rel="noopener noreferrer" style="font-family: 'Rajdhani', sans-serif;"><img src="https://cepu.us.kg/telegram.png
-" alt="menu" width="30"> ADMIN TELEGRAM</a></span>
-  <span class="menu">
-        <a href="https://wa.me/6287861167414" target="_blank" rel="noopener noreferrer" style="font-family: 'Rajdhani', sans-serif;"><img src="https://cepu.us.kg/whatsapp.png
-" alt="menu" width="30"> ADMIN WHATSAPP 1</a></span>
-  <span class="menu">
-    <a href="https://wa.me/6281335135082" target="_blank" rel="noopener noreferrer" style="font-family: 'Rajdhani', sans-serif;"><img src="https://cepu.us.kg/whatsapp.png
-" alt="menu" width="30"> ADMIN WHATSAPP 2</a></span>
-<button class="button7" id="close" onclick="hidePopup('menu')">Close</button>
-    
-</div></div>
 <div class="popup" id="sub-link">
 <div class="popup-content">
   <div class="table-container">
@@ -1430,7 +1425,7 @@ function generateLinks() {
     if (!bug) {
       wildcard = "false"; // Atur wildcard menjadi false jika bug tidak diisi
     }
-    link1 = `https://woless.kere.us.kg/api/${app}?type=${configType}&bug=${bug}&tls=${tls}&wildcard=${wildcard}&limit=${limit}&country=${country}`;
+    link1 = `https://gratisan.cepu.us.kg/api/${app}?type=${configType}&bug=${bug}&tls=${tls}&wildcard=${wildcard}&limit=${limit}&country=${country}`;
   }
 
   // Tampilkan link pada input box
@@ -1732,7 +1727,7 @@ function uuidv4() {
         proxyList.appendChild(row);
 
         row.querySelector('.copy-vless').addEventListener('click', () => {
-    const host = "woless.kere.us.kg";
+    const host = "gratisan.cepu.us.kg";
 const selectedService = row.querySelector('.service-selector').value || host;
 const domain = selectedService === host ? host : `${selectedService}.${host}`;
     const VLESS = `vless://${uuidv4()}@${selectedService}:443?encryption=none&type=ws&host=${domain}&path=%2FFree-CF-Proxy-${id}${cons}&security=tls&sni=${domain}#(${selectedService})+${id}+${isp}`;
@@ -1751,7 +1746,7 @@ const domain = selectedService === host ? host : `${selectedService}.${host}`;
 });
 
 row.querySelector('.copy-vless-clash').addEventListener('click', () => {
-    const host = "woless.kere.us.kg";
+    const host = "gratisan.cepu.us.kg";
 const selectedService = row.querySelector('.service-selector').value || host;
 const domain = selectedService === host ? host : `${selectedService}.${host}`;
     const VLESSC = `vless://${uuidv4()}@${selectedService}:443?encryption=none&type=ws&host=${domain}&path=%2FFree-CF-Proxy-${ip}-${port}&security=tls&sni=${domain}#(${selectedService})+${id}+${isp}`;
@@ -1770,7 +1765,7 @@ const domain = selectedService === host ? host : `${selectedService}.${host}`;
 });
 
 row.querySelector('.copy-trojan').addEventListener('click', () => {
-    const host = "woless.kere.us.kg";
+    const host = "gratisan.cepu.us.kg";
 const selectedService = row.querySelector('.service-selector').value || host;
 const domain = selectedService === host ? host : `${selectedService}.${host}`;
     const TROJAN = `trojan://${uuidv4()}@${selectedService}:443?encryption=none&type=ws&host=${domain}&path=%2FFree-CF-Proxy-${id}${cons}&security=tls&sni=${domain}#(${selectedService})+${id}+${isp}`;
@@ -1790,7 +1785,7 @@ const domain = selectedService === host ? host : `${selectedService}.${host}`;
 
 row.querySelector('.copy-trojan-clash877').addEventListener('click', () => {
     const selectedService = row.querySelector('.service-selector').value || "xvp.bmkg.xyz";
-    const host = "woless.kere.us.kg";
+    const host = "gratisan.cepu.us.kg";
     const domain = selectedService === host ? host : `${selectedService}.${host}`;
     const TROJANC877 = `trojan://${uuidv4()}@${selectedService}:443?encryption=none&type=ws&host=${domain}&path=%2FFree-CF-Proxy-${ip}-${port}&security=tls&sni=${domain}#(${selectedService})+${id}+${isp}`;
     
@@ -1809,7 +1804,7 @@ row.querySelector('.copy-trojan-clash877').addEventListener('click', () => {
 });
 
 row.querySelector('.copy-ss').addEventListener('click', () => {
-    const host = "woless.kere.us.kg";
+    const host = "gratisan.cepu.us.kg";
 const selectedService = row.querySelector('.service-selector').value || host;
 const domain = selectedService === host ? host : `${selectedService}.${host}`;
     const SS = `ss://bm9uZTo1ZDJlYmQyYS05Y2I5LTRkMWItYWY1NS04NjE3ZDNlODFmMzk%3D@${selectedService}:443?encryption=none&type=ws&host=${domain}&path=%2FFree-CF-Proxy-${id}${cons}&security=tls&sni=${domain}#(${selectedService})+${id}+${isp}`;
@@ -1828,7 +1823,7 @@ const domain = selectedService === host ? host : `${selectedService}.${host}`;
 });
 
 row.querySelector('.copy-ss1').addEventListener('click', () => {
-    const host = "woless.kere.us.kg";
+    const host = "gratisan.cepu.us.kg";
 const selectedService = row.querySelector('.service-selector').value || host;
 const domain = selectedService === host ? host : `${selectedService}.${host}`;
     const SS1 = `ss://bm9uZTo1ZDJlYmQyYS05Y2I5LTRkMWItYWY1NS04NjE3ZDNlODFmMzk%3D@${selectedService}:443?encryption=none&type=ws&host=${domain}&path=%2FFree-CF-Proxy-${ip}-${port}&security=tls&sni=${domain}#(${selectedService})+${id}+${isp}`;
