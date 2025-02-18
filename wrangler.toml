@@ -10,7 +10,9 @@ enabled = true
 enabled = true
 
 
-
+[[routes]]
+pattern = "subapi.kere.us.kg"
+custom_domain = true
 [[routes]]
 pattern = "gratisan.kere.us.kg"
 custom_domain = true
