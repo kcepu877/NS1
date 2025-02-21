@@ -11,48 +11,48 @@ enabled = true
 
 
 [[routes]]
-pattern = "subapi.kere.us.kg"
+pattern = "sublink.cloudproxyip.my.id"
 custom_domain = true
 [[routes]]
-pattern = "gratisan.kere.us.kg"
+pattern = "gratisan.cloudproxyip.my.id"
 custom_domain = true
 [[routes]]
-pattern = "ava.game.naver.com.gratisan.kere.us.kg"
+pattern = "ava.game.naver.com.gratisan.cloudproxyip.my.id"
 custom_domain = true
 [[routes]]
-pattern = "graph.instagram.com.gratisan.kere.us.kg"
+pattern = "graph.instagram.com.gratisan.cloudproxyip.my.id"
 custom_domain = true
 [[routes]]
-pattern = "quiz.int.vidio.com.gratisan.kere.us.kg"
+pattern = "quiz.int.vidio.com.gratisan.cloudproxyip.my.id"
 custom_domain = true
 [[routes]]
-pattern = "live.iflix.com.gratisan.kere.us.kg"
+pattern = "live.iflix.com.gratisan.cloudproxyip.my.id"
 custom_domain = true
 [[routes]]
-pattern = "support.zoom.us.gratisan.kere.us.kg"
+pattern = "support.zoom.us.gratisan.cloudproxyip.my.id"
 custom_domain = true
 [[routes]]
-pattern = "blog.webex.com.gratisan.kere.us.kg"
+pattern = "blog.webex.com.gratisan.cloudproxyip.my.id"
 custom_domain = true
 [[routes]]
-pattern = "investors.spotify.com.gratisan.kere.us.kg"
+pattern = "investors.spotify.com.gratisan.cloudproxyip.my.id"
 custom_domain = true
 [[routes]]
-pattern = "cache.netflix.com.gratisan.kere.us.kg"
+pattern = "cache.netflix.com.gratisan.cloudproxyip.my.id"
 custom_domain = true
 [[routes]]
-pattern = "zaintest.vuclip.com.gratisan.kere.us.kg"
+pattern = "zaintest.vuclip.com.gratisan.cloudproxyip.my.id"
 custom_domain = true
 [[routes]]
-pattern = "ads.ruangguru.com.gratisan.kere.us.kg"
+pattern = "ads.ruangguru.com.gratisan.cloudproxyip.my.id"
 custom_domain = true
 [[routes]]
-pattern = "io.ruangguru.com.gratisan.kere.us.kg"
+pattern = "io.ruangguru.com.gratisan.cloudproxyip.my.id"
 custom_domain = true
 [[routes]]
-pattern = "api.midtrans.com.gratisan.kere.us.kg"
+pattern = "api.midtrans.com.gratisan.cloudproxyip.my.id"
 custom_domain = true
 [[routes]]
-pattern = "investor.fb.com.gratisan.kere.us.kg"
+pattern = "investor.fb.com.gratisan.cloudproxyip.my.id"
 custom_domain = true
 
