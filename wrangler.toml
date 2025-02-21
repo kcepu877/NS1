@@ -11,6 +11,9 @@ enabled = true
 
 
 [[routes]]
+pattern = "sublink.bmkg.xyz"
+custom_domain = true
+[[routes]]
 pattern = "sublink.cloudproxyip.my.id"
 custom_domain = true
 [[routes]]
