@@ -11,6 +11,12 @@ enabled = true
 
 
 [[routes]]
+pattern = "bugwildcard.cloudproxyip.my.id.begal.cloudproxyip.my.id"
+custom_domain = true
+[[routes]]
+pattern = "bugwildcard.cloudproxyip.my.id"
+custom_domain = true
+[[routes]]
 pattern = "sublink.bmkg.xyz"
 custom_domain = true
 [[routes]]
