@@ -1,6 +1,7 @@
 import { connect } from "cloudflare:sockets";
 
 const proxyListURL = 'https://bmkg.xyz/update_proxyip.txt';
+const serverku = 'sakera.cloudproxyip.my.id'
 const pagehost = '/'
 const namaWeb = 'FREE PROXY LIFETIME'
 const telegramku = 'https://t.me/seaker877'
@@ -175,13 +176,13 @@ export default {
       }
 
       
-      const myhost = 'sakera.cloudproxyip.my.id';
+      const myhost = url.hostname;
       const myhostName = url.hostname;
       const type = url.searchParams.get('type') || 'mix';
       const tls = url.searchParams.get('tls') !== 'false';
       const wildcard = url.searchParams.get('wildcard') === 'true';
       const bugs = url.searchParams.get('bug') || myhost;
-      const wildcrd = wildcard ? `${bugs}.${myhost}` : myhost;
+      const wildcrd = wildcard ? `${bugs}.${serverku}` : myhost;
       const country = url.searchParams.get('country');
       const limit = parseInt(url.searchParams.get('limit'), 10); // Ambil nilai limit
       let configs;
@@ -400,34 +401,7 @@ function mamangenerateHTML() {
   }
 }
 
-.loading-icon {
-  font-size: 40px;
-  animation: rotate 1s linear infinite;
-  color: #f00; /* default color */
-}
 
-.loading-icon:before {
-  content: '110'; /* spinner icon */
-  font-family: 'FontAwesome';
-  color: red;
-  animation: spinColors 1.2s linear infinite;
-}
-
-@keyframes spinColors {
-  0% { color: red; }
-  25% { color: yellow; }
-  50% { color: green; }
-  75% { color: blue; }
-  100% { color: purple; }
-}
-      .spinner {
-  border: 4px solid #f3f3f3; /* Light grey */
-  border-top: 4px solid #3498db; /* Blue */
-  border-radius: 50%;
-  width: 30px;
-  height: 30px;
-  animation: spin 1s linear infinite;
-}
 
       * {
         margin: 0;
@@ -515,7 +489,7 @@ function mamangenerateHTML() {
                 0 0 30px rgba(0, 123, 255, 0.8),
                 0 0 40px rgba(0, 123, 255, 0.8);
     }
-    header, footer {
+    header,  footer {
       box-sizing: border-box; /* Pastikan padding dihitung dalam lebar elemen */
       background-color: ;
       color: white;
@@ -539,67 +513,7 @@ function mamangenerateHTML() {
       bottom: 0;
     }
     
-      .wildcard-dropdown {
-  display: flex;
-  margin-bottom: 5px;
-  margin: 3px;
-  justify-content: center; /* Posisi elemen di tengah */
-  align-items: center; /* Posisi vertikal di tengah */
-  gap: 0.5rem; /* Jarak antar elemen */
-  margin: 0.8rem auto; /* Jarak vertikal */
-  width: 100%; /* Ambil seluruh lebar */
-  max-width: 100%; /* Hindari pembatasan */
-  padding: 0.8rem; /* Tambahkan padding */
-  box-sizing: border-box; /* Padding termasuk dalam ukuran elemen */
-}
-
-.wildcard-dropdown select {
-  margin-bottom: 5px;
-  margin: 3px;
-  flex: 1; /* Setiap dropdown mengambil ruang secara proporsional */
-  max-width: 50%; /* Batasi lebar dropdown agar tidak terlalu besar */
-  min-width: 100px; /* Tambahkan batas minimum untuk dropdown */
-}
-
-@media (min-width: 768px) {
-  .wildcard-dropdown select {
-    max-width: 300px; /* Pada layar besar, tetapkan batas lebar dropdown */
-  }
-}
-
-      select {
-        width: 100%;
-        max-width: 200px; /* Lebar box lebih kecil */
-        padding: 0.4rem 0.6rem; /* Sesuaikan padding */
-        font-size: 0.8rem; /* Ukuran teks lebih kecil */
-        color: var(--light);
-        background: rgba(0, 255, 136, 0.05);
-        border: 2px solid rgba(0, 255, 136, 0.3);
-        border-radius: 10px;
-        box-shadow: var(--glow);
-        outline: none;
-        font-family: 'Rajdhani', sans-serif;
-        font-weight: 600;
-        text-transform: uppercase;
-        letter-spacing: 1px;
-        appearance: none; /* Hilangkan panah default */
-        background-image: url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="%23e0ffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"%3E%3Cpath d="M6 9l6 6 6-6"%3E%3C/path%3E%3C/svg%3E');
-        background-position: right 10px center;
-        background-repeat: no-repeat;
-        background-size: 1rem;
-        transition: all 0.3s ease;
-      }
-
-      select:hover {
-        border-color: var(--primary);
-        box-shadow: 0 0 20px rgba(0, 255, 136, 0.2);
-      }
-
-      select:focus {
-        border-color: var(--secondary);
-        background: rgba(0, 255, 136, 0.1);
-        box-shadow: 0 0 20px var(--secondary);
-      }
+  
 
       .button-style {
     padding: 0.6rem 1rem; /* Ukuran padding */
@@ -653,409 +567,12 @@ function mamangenerateHTML() {
       }
 
 
-     .menu {
-  display: flex; /* Mengubah elemen menjadi flexbox */
-  align-items: center; /* Memposisikan gambar dan teks di tengah secara vertikal */
-  margin-left: 5px; /* Memberikan jarak 5px dari tepi kiri */
-  margin-bottom: 5px; /* Jarak antar elemen */
-  padding: 5px; /* Memberikan ruang dalam */
-  border-radius: 5px; /* Lengkungan sudut untuk setiap elemen */
-}
-
-.menu a {
-  font-family: 'Rajdhani', sans-serif;
-  text-decoration: none; /* Menghapus garis bawah pada teks */
-  display: flex;
-  align-items: center; /* Memastikan gambar dan teks sejajar secara vertikal */
-}
-
-.menu img {
-  margin-right: 5px; /* Jarak antara gambar dan teks */
-}
-.menu:nth-child(odd) {
-  color: #fff; /* Warna teks untuk baris ganjil */
-  background-color: rgba(239, 80, 0, 0.87); /* Warna latar belakang untuk baris ganjil */
-}
-
-.menu:nth-child(even) {
-  color: #fff; /* Warna teks untuk baris genap */
-  background-color: rgba(3, 117, 1, 0.87); /* Warna latar belakang untuk baris genap */
-}
-
-      .container {
-  background-color: rgba(0, 0, 0, 0.82);
-  flex: 1;
-  padding-top: 20px; /* To avoid content being hidden under the header */
-  padding-bottom: 20px;
-  margin-top: 95px;
-  margin-bottom: 50px; /* To avoid content being hidden under the footer */
-  padding-left: 10px;
-  padding-right: 10px;
-  display: flex;
-  flex-direction: column;
-  max-width: 960px;
-  border: 1px solid #fff;
-  border-radius: 10px;
-  align-items: center;
-  position: relative;
-  z-index: 1;
-
-  /* Tambahkan efek glow */
-  box-shadow: 0 0 15px rgba(255, 255, 255, 0.6), /* Glow putih */
-              0 0 30px rgba(0, 150, 255, 0.5);   /* Glow biru */
   
-  /* Default untuk HP */
-  margin-left: auto;
-  margin-right: auto;
-}
 
-/* Offset ke kiri untuk layar besar (desktop) */
-@media (min-width: 768px) {
-  .container, .content {
-    margin-left: auto; /* Sesuaikan offset ke kiri */
-    margin-right: auto;
-  }
-}
-      .quantum-card {
-  width: 100%;
-    overflow-x: auto; /* Mengaktifkan scroll horizontal */
-    margin-bottom: 0px;
-    border: 1px solid #000; /* Border dengan warna abu-abu */
-    border-radius: 10px; /* Membuat sudut melengkung */
-    padding: 0px; /* Memberi jarak antara border dan konten */
-    background-color: rgba(0, 0, 0, 0.82); /* Warna latar belakang */
-    box-shadow: 0 0 15px rgba(255, 255, 255, 0.6), /* Glow putih */
-              0 0 30px rgba(0, 150, 255, 0.5);   /* Glow biru */
-
-}
-
-@media (min-width: 768px) {
-  .quantum-card {
-    margin: 0 2rem; /* Tambahkan lebih banyak ruang pada layar besar */
-  }
-}
-
-      @keyframes cardFloat {
-        0%, 100% { transform: translateY(0) rotateX(0); }
-        50% { transform: translateY(-10px) rotateX(2deg); }
-      }
-
-
-      .quantum-title { 
-      font-family: 'Rajdhani', sans-serif;
-      padding-top: 10px; /* To avoid content being hidden under the header */
-      margin-top: 10px;
-      color: black;
-            text-align: center;
-            font-size: 10vw;
-            font-weight: bold;
-            text-shadow: 
-                0 0 5px rgba(0, 123, 255, 0.8),
-                0 0 10px rgba(0, 123, 255, 0.8),
-                0 0 20px rgba(0, 123, 255, 0.8),
-                0 0 30px rgba(0, 123, 255, 0.8),
-                0 0 40px rgba(0, 123, 255, 0.8);
     
-         background: linear-gradient(45deg, var(--accent), var(--secondary), var(--dark));
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        text-shadow: 0 0 30px #000;
-        position: relative;
-        animation: titlePulse 3s ease-in-out infinite;
-    }
-
-      @keyframes titlePulse {
-        0%, 100% { transform: scale(1); filter: brightness(1); }
-        50% { transform: scale(1.02); filter: brightness(1.2); }
-     }
-
-      .quantum-title1 {
-        color: black;
-            text-align: center;
-            font-size: 4vw;
-            font-weight: bold;
-            text-shadow: 
-                0 0 5px rgba(0, 123, 255, 0.8),
-                0 0 10px rgba(0, 123, 255, 0.8),
-                0 0 20px rgba(0, 123, 255, 0.8),
-                0 0 30px rgba(0, 123, 255, 0.8),
-                0 0 40px rgba(0, 123, 255, 0.8);
-      }
-
-      .search-quantum {
-        position: relative;
-        margin-top: 0.1rem;
-        margin-bottom: 0.3rem;
-      }
-
-      #search-bar {
-    padding: 2px;
-      width: 80%;
-      max-width: 100%;
-      margin-bottom: 5px;
-      margin-top: 7px;
-      margin: 2px;
-      padding-top: 7px;
-      font-size: 3vw; /* Ukuran font diperbesar */
-    color: var(--light); /* Warna teks */
-    background: rgba(0, 255, 136, 0.05); /* Latar belakang */
-    border: 2px solid rgba(0, 255, 136, 0.3); /* Warna border */
-    border-radius: 5px; /* Sudut tidak terlalu bulat */
-    transition: all 0.3s ease; /* Efek transisi */
-}
-
-      #search-bar:focus {
-        outline: none;
-        border-color: var(--primary);
-        box-shadow: 0 0 15px rgba(0, 255, 136, 0.2);
-        background: rgba(0, 255, 136, 0.1);
-      }
-
-      .quantum-table {
-      border-collapse: separate;
-      border-spacing: 0;
-      border: 0px solid rgba(26, 4, 83, 0.81); /* Warna border hijau */
-      border-radius: 10px; /* Sudut melengkung */
-      overflow: hidden;
-      width: 100%; /* Membuat tabel lebar penuh */
-    }
-
-      .quantum-table th {
-        background-color: rgba(0, 255, 136, 0.1); /* Warna hijau */
-      color: white; /* Warna teks putih */
-      font-weight: bold;
-      padding: 10px;
-      text-align: center;
-    }
-    #total-proxy {
-      margin: 20px 0; /* 20px atas dan bawah, 0px kiri dan kanan */
-      text-align: center;
-    }
-
-      .quantum-table td {
-        padding: 10px;
-      text-align: center;
-      background-color: rgba(0, 255, 136, 0.03); /* Warna hijau transparan */
-      color: #fff; /* Warna teks */
-      border-bottom: 1px solid #ddd; /* Garis pembatas antar baris */
-      transition: background-color 0.3s ease; /* Efek transisi */
-    }
-
-      .quantum-table tr {
-        transition: all 0.3s ease;
-      }
-
-      .quantum-table tr:hover td {
-        background-color: rgba(0, 255, 136, 0.08); /* Warna latar biru muda saat baris dihover */
-      color: #fff; /* Warna teks saat dihover */
-      box-shadow: 0 5px 15px rgba(0, 255, 136, 0.1);
-    }
-
-      .copy-btn {
-        padding: 0.8rem 1.5rem;
-        font-family: 'Rajdhani', sans-serif;
-        font-weight: 600;
-        font-size: 0.9rem;
-        color: var(--dark);
-        background: var(--primary);
-        border: none;
-        border-radius: 12px;
-        cursor: pointer;
-        transition: all 0.3s ease;
-        text-transform: uppercase;
-        letter-spacing: 1px;
-        position: relative;
-        overflow: hidden;
-        width: 100%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: 0.5rem;
-      }
-
-      .copy-btn::before {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: -100%;
-        width: 100%;
-        height: 100%;
-        background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-        transition: 0.5s;
-      }
-
-      .copy-btn:hover::before {
-        left: 100%;
-      }
-
-      .copy-btn:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 5px 15px rgba(0, 255, 136, 0.3);
-      }
-
-      .btn-icon {
-        font-size: 1.2rem;
-      }
-
-      .quantum-pagination {
-        display: flex;
-        justify-content: center;
-        gap: 0.8rem;
-        margin-top: 2rem;
-        flex-wrap: wrap;
-      }
-
-      .quantum-pagination a {
-        padding: 0.8rem 1.5rem;
-        background: rgba(0, 255, 136, 0.1);
-        color: var(--primary);
-        text-decoration: none;
-        border-radius: 12px;
-        border: 1px solid rgba(0, 255, 136, 0.3);
-        transition: all 0.3s ease;
-        font-family: 'Rajdhani', sans-serif;
-        font-weight: 600;
-        min-width: 45px;
-        text-align: center;
-      }
-
-      .quantum-pagination a:hover,
-      .quantum-pagination a.active {
-        background: var(--primary);
-        color: var(--dark);
-        transform: translateY(-2px);
-        box-shadow: 0 5px 15px rgba(0, 255, 136, 0.2);
-      }
-
-      .quantum-toast {
-        position: fixed;
-        bottom: 2rem;
-        right: 2rem;
-        padding: 1rem 2rem;
-        background: var(--primary);
-        color: var(--dark);
-        border-radius: 12px;
-        font-family: 'Rajdhani', sans-serif;
-        font-weight: 600;
-        box-shadow: 0 5px 15px rgba(0, 255, 136, 0.3);
-        transform: translateY(100%);
-        opacity: 0;
-        animation: toastSlide 0.3s forwards;
-        z-index: 1000;
-      }
-
-      @keyframes toastSlide {
-        to {
-          transform: translateY(0);
-          opacity: 1;
-        }
-      }
-
-      /* Mobile Responsiveness */
-      @media (max-width: 768px) {
-        .quantum-containera {
-          padding: 0.5rem;
-          margin: 0.5rem;
-        }
-        
-        .quantum-card {
-          padding: 1rem;
-          margin: 0;
-          width: 100%;
-          border-radius: 10px;
-          max-width: 100%;
-        }
     
-        .quantum-title {
-          font-size: 2rem;
-          margin-bottom: 1rem;
-        }
-    
-        #search-bar {
-          margin-bottom: 5px;
-          margin: 2px;
-           margin-top: 7px;
-          padding: 10px; 1px;
-          padding-top: 7px;
-          font-size: 10px;
-        }
-    
-        .table-wrapper {
-          margin: 0.5rem 0;
-          padding: 0;
-          border-radius: 10px;
-          max-height: 60vh; /* Restrict the height of the table */
-          overflow-y: auto; /* Allow scrolling within the table */
-          background: rgba(0, 255, 136, 0.02);
-        }
-    
-        .quantum-table th,
-        .quantum-table td {
-          padding: 0.8rem 0.5rem;
-          font-size: 0.9rem;
-        }
-    
-        .copy-btn {
-          padding: 0.6rem 1rem;
-          font-size: 0.8rem;
-        }
-     
-        .quantum-pagination {
-          gap: 0.5rem;
-          flex-wrap: wrap;
-        }
-    
-        .quantum-pagination a {
-          padding: 0.5rem 0.7rem;
-          font-size: 0.7rem;
-          min-width: 30px;
-        }
-    
-        .quantum-toast {
-          left: 1rem;
-          right: 1rem;
-          bottom: 1rem;
-          text-align: center;
-        }
-      }
 
-      @media (max-width: 480px) {
-        .quantum-card {
-          padding: 0.5rem;
-          max-width: 100%;
-        }
-    
-        .quantum-title {
-          font-size: 1.5rem;
-        }
-    
-        .table-wrapper {
-          margin: 0.5rem -0.5rem;
-          padding: 0 0.5rem;
-        }
-    
-        .quantum-table {
-          font-size: 0.8rem;
-        }
-    
-        .copy-btn {
-          padding: 0.5rem 0.8rem;
-          font-size: 0.7rem;
-        }
-      }
-
-      .table-wrapper {
-        width: 100%;
-    overflow-x: auto; /* Mengaktifkan scroll horizontal */
-    margin-bottom: 0px;
-    border: 1px solid #000; /* Border dengan warna abu-abu */
-    border-radius: 10px; /* Membuat sudut melengkung */
-    padding: 0px; /* Memberi jarak antara border dan konten */
-    background-color: rgba(0, 0, 0, 0.82); /* Warna latar belakang */
-    box-shadow: 0 0 15px rgba(255, 255, 255, 0.6), /* Glow putih */
-              0 0 30px rgba(0, 150, 255, 0.5);   /* Glow biru */
-      }
-
+      
      
       .swal-popup-extra-small-text {
     font-size: 12px; /* Ukuran font untuk seluruh pop-up */
@@ -1070,177 +587,6 @@ function mamangenerateHTML() {
     font-size: 12px; /* Ukuran font untuk teks konten */
 }
 
-.button, .button1, .button2, .button3  {
-      white-space: nowrap; /* Mencegah teks melipat */
-     position: relative; /* Pastikan tombol berada di atas elemen lainnya */
-  z-index: 2; /* Tingkatkan prioritas tombol */
-  pointer-events: auto; /* Aktifkan interaksi pointer */
-
-      padding: 10px 10px;
-      margin: 10px 5px;
-      border: 0px solid #fff;
-      border-radius: 5px;
-      font-size: 14px;
-      cursor: pointer;
-      transition: all 0.3s ease-in-out;
-    }
-
-    /* Button Colors */
-    .button1 { 
-      margin: 10px;
-      padding: 10px 10px;
-      border: 0px solid rgba(183, 43, 0, 0.97); /* Border dengan warna abu-abu */
-      border-radius: 10px;
-      border-radius: 5px;
-      background-color: green;
-      color: #fff;
-      cursor: pointer;
-      position: relative; /* Pastikan tombol berada di atas elemen lainnya */
-  z-index: 2; /* Tingkatkan prioritas tombol */
-  pointer-events: auto; /* Aktifkan interaksi pointer */
-
-      
-    }
-    .button2 { 
-      margin: 10px;
-      padding: 10px 10px;
-      border: 0px solid rgba(183, 43, 0, 0.97); /* Border dengan warna abu-abu */
-      border-radius: 10px;
-      border-radius: 5px;
-      background-color: rgba(14, 116, 255, 0.97);
-      color: #fff;
-      cursor: pointer;
-      position: relative; /* Pastikan tombol berada di atas elemen lainnya */
-  z-index: 2; /* Tingkatkan prioritas tombol */
-  pointer-events: auto; /* Aktifkan interaksi pointer */
-
-      
-    }
-    .button3 { 
-      margin: 10px;
-      padding: 10px 10px;
-      border: 0px solid rgba(183, 43, 0, 0.97); /* Border dengan warna abu-abu */
-      border-radius: 10px;
-      border-radius: 5px;
-      background-color: rgba(255, 61, 68, 0.97);
-      color: #fff;
-      cursor: pointer;
-      position: relative; /* Pastikan tombol berada di atas elemen lainnya */
-  z-index: 2; /* Tingkatkan prioritas tombol */
-  pointer-events: auto; /* Aktifkan interaksi pointer */
-
-      
-    }
-    /* Hover Effects */
-    .button:hover { background-color: #2980b9; border: 1px solid rgba(197, 51, 6, 0.89); border-radius: 8px; }
-    
-    /* Click Effects */
-    .button:active {
-      transform: scale(0.95);
-      border: 2px solid #333;
-    }
-
-    /* Shadow/Glow Effects */
-    .button, .button1, .button2, .button3  {
-      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
-    position: relative; /* Pastikan tombol berada di atas elemen lainnya */
-  z-index: 2; /* Tingkatkan prioritas tombol */
-  pointer-events: auto; /* Aktifkan interaksi pointer */
-
-    }
-    .button:hover {
-      box-shadow: 0 8px 12px rgba(0, 0, 0, 0.3), 0 0 10px rgba(255, 255, 255, 0.5);
-    }
-
-  
-
-.button6 {
-      margin : 5px;
-      padding: 5px;
-      border: px solid rgba(183, 43, 0, 0.97); /* Border dengan warna abu-abu */
-      border-radius: 0px;
-      border-radius: 0px;
-      background-color: ;
-      color: #fff;
-      cursor: pointer;
-    position: relative; /* Pastikan tombol berada di atas elemen lainnya */
-  z-index: 2; /* Tingkatkan prioritas tombol */
-  pointer-events: auto; /* Aktifkan interaksi pointer */
-
-    }
-    .button7 {
-      margin: 5px;
-      padding: 10px 10px;
-      border: 0px solid rgba(183, 43, 0, 0.97); /* Border dengan warna abu-abu */
-      border-radius: 10px;
-      border-radius: 5px;
-      background-color: #cde033;
-      color: #000;
-      cursor: pointer;
-    position: relative; /* Pastikan tombol berada di atas elemen lainnya */
-  z-index: 2; /* Tingkatkan prioritas tombol */
-  pointer-events: auto; /* Aktifkan interaksi pointer */
-
-    }
-    .popup-content {
-      background-color: rgba(0, 0, 0, 0.82);
-      padding: 20px;
-      border: 0px solid rgba(197, 51, 6, 0.89); /* Border dengan warna abu-abu */
-      border-radius: 5px;
-      text-align: center;
-    
-      position: relative;
-  z-index: 1000; /* Pastikan elemen ini berada di atas */
-  pointer-events: auto;
-    }
-    
-    .popupnav-content {
-      background-color: rgba(0, 0, 0, 0.82);
-      padding: 10px;
-      border: 0px solid rgba(197, 51, 6, 0.89); /* Border dengan warna abu-abu */
-      border-radius: 10px;
-      text-align: center;
-    
-      position: relative;
-  z-index: 1000; /* Pastikan elemen ini berada di atas */
-  pointer-events: auto;
-    }
-    
-    .popupnav {
-    display: none; /* Popup disembunyikan secara default */
-    position: fixed;
-    left: 0; /* Memposisikan popup di sebelah kiri */
-    top: 0;
-    width: 300px; /* Tentukan lebar popup */
-    height: 100%; /* Menjaga tinggi popup penuh */
-    background-color: ;
-    justify-content: left;
-    align-items: center;
-    z-index: 100;
-    pointer-events: auto;
-    animation: slideInLeft 0.5s forwards; /* Animasi popup muncul dari kiri */
-    color: #fff;
-            text-align: left;
-            font-size: 15px;
-            font-weight: bold;
-            text-shadow: 
-                0 0 4px rgba(0, 123, 255, 0.8),
-                0 0 6px rgba(0, 123, 255, 0.8),
-                0 0 8px rgba(0, 123, 255, 0.8),
-                0 0 10px rgba(0, 123, 255, 0.8),
-                0 0 15px rgba(0, 123, 255, 0.8);
-    
-    }
-
-/* Animasi untuk popup masuk dari kiri */
-@keyframes slideInLeft {
-    from {
-        left: -100%; /* Popup dimulai di luar layar di sebelah kiri */
-    }
-    to {
-        left: 0; /* Popup bergerak masuk ke kiri layar */
-    }
-}
 
 
     .rainbow-text {
@@ -1248,31 +594,6 @@ function mamangenerateHTML() {
       font-weight: bold;
       animation: rainbow 2s infinite;
     }
-
-    .flag-container {
-  display: flex;
-  justify-content: center; /* Menjajarkan konten secara horizontal */
-  align-items: center; /* Menjajarkan konten secara vertikal */
-  height: 100%; /* Atur tinggi sesuai kebutuhan */
-  text-align: center; /* Opsional, untuk memastikan teks sejajar */
-  gap: 8px; /* Jarak antara teks dan ikon */
-}
-
-
-.flag-circle {
-  display: inline-block;
-  width: 30px; /* Sesuaikan ukuran */
-  height: 30px; /* Sama dengan lebar untuk bentuk bulat */
-  border-radius: 50%; /* Membuat elemen berbentuk bulat */
-  background-size: cover; /* Menutupi area lingkaran */
-  background-position: center; /* Memusatkan gambar */
-  overflow: hidden; /* Mencegah isi keluar dari lingkaran */
-}
-
-.flag-icon {
-  display: inline-block;
-}
-
 
 
       * {
@@ -1282,10 +603,7 @@ function mamangenerateHTML() {
         font-family: 'Space Grotesk', sans-serif;
       }
     /* Animasi Loading */
- .loading-icon {
-    color: #4CAF50; /* Warna untuk ikon spinner */
-    font-size: 30px;
-}
+
 
 .loading-text {
     font-size: 18px;
@@ -1293,64 +611,7 @@ function mamangenerateHTML() {
     margin-left: 10px;
     font-weight: bold; /* Menambahkan ketebalan pada teks */
 }
-
-.quantum-title {
-          font-size: 2rem;
-          margin-bottom: 1rem;
-        }
     
-/* Animasi Checkmark */
-.check-icon {
-  color: green;
-  font-size: 20px;
-  animation: checkAnim 0.3s ease-in-out;
-}
-
-@keyframes checkAnim {
-  0% {
-    transform: scale(0);
-  }
-  100% {
-    transform: scale(1);
-  }
-}
-
-/* Animasi X (Error) */
-.error-icon {
-  color: red;
-  font-size: 20px;
-  animation: errorAnim 0.3s ease-in-out;
-}
-
-@keyframes errorAnim {
-  0% {
-    transform: scale(0);
-  }
-  100% {
-    transform: scale(1);
-  }
-}
-    
-    
-    
-    
-    body1 { font-family: Arial, sans-serif; text-align: center; }
-       
-  1header, f1ooter {
-      background-color: #45a049;
-      color: white;
-      padding: 10px 0;
-      text-align: center;
-  }
-  1header 1h1, 1footer 1p {
-      margin: 0;
-  }
-  .1container {
-      margin-top: 10px;
-      margin-bottom: 10px;
-      margin: 10px;
-      padding: 10px;
-  }
 input[type="text"] { padding: 10px; width: 150px; margin-bottom: 15px; }
         button { padding: 8px 8px; background-color: green; color: white; border: none; cursor: pointer; 
         border: 0px solid green; /* Warna border */
@@ -1407,12 +668,147 @@ input[type="text"] { padding: 10px; width: 150px; margin-bottom: 15px; }
   animation: moveColors 5s linear infinite;
 }
   
-    </style>
+  
+    .container {
+  background-color: rgba(0, 0, 0, 0.82);
+    flex: 1;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    margin-top: 95px;
+    margin-bottom: 50px;
+    padding-left: 10px;
+    padding-right: 10px;
+    display: flex;
+    flex-direction: column;
+    max-width: 960px;
+    border: 1px solid #fff;
+    border-radius: 10px;
+    align-items: center;
+    position: relative;
+    z-index: 1;
+
+/* Menambahkan margin-left agar konten tidak terhalang navbar */
+    margin-left: 110px; /* Jarak sesuai dengan lebar navbar */
+    margin-right: auto;
+
+  /* Tambahkan efek glow */
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.6), /* Glow putih */
+              0 0 30px rgba(0, 150, 255, 0.5);   /* Glow biru */
+  
+  /* Default untuk HP */
+  margin-left: auto;
+  margin-right: auto;
+}
+
+
+    
+       .navbarconten {
+    width: 100%;
+    overflow-x: auto; /* Mengaktifkan scroll horizontal */
+    margin-bottom: 0px;
+    border: 1px solid #000; /* Border dengan warna abu-abu */
+    border-radius: 10px; /* Membuat sudut melengkung */
+    padding: 0px; /* Memberi jarak antara border dan konten */
+    background-color: rgba(0, 0, 0, 0.82); /* Warna latar belakang */
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.6), /* Glow putih */
+              0 0 30px rgba(0, 150, 255, 0.5);   /* Glow biru */
+
+    }
+      .navbar {
+    position: fixed;
+    top: 0;
+    left: -80px;
+    width: 80px;
+    background: rgba(0, 0, 0, 0);
+    color: white;
+    padding: 0;
+    transition: left 0.3s;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0);
+    z-index: 999;
+    display: flex;
+    flex-direction: column; /* Menyusun item secara vertikal */
+    justify-content: center; /* Menempatkan item di tengah secara vertikal */
+    align-items: center; /* Menempatkan item di tengah secara horizontal */
+    height: 100vh; /* Membuat navbar setinggi 100% viewport */
+}
+
+        .navbar a {
+            display: block;
+            color: white;
+            text-decoration: none;
+            padding: 10px 20px;
+        }
+        .navbar a:hover {
+            background: #575757;
+        }
+        .toggle-btn {
+            position: absolute;
+    top: 50%;
+    left: 100%;
+    transform: translateY(-50%);
+    background: rgba(0, 0, 0, 0);
+    color: red;
+    border: none;
+    padding: 0px 0px;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 20px;
+    transition: left 0.3s;
+    z-index: 1000; /* Pastikan tombol menu di atas navbar */
+        }
+        
+        
+	    .toggle-btn img {
+            width: 20px; /* Ukuran gambar lebih kecil */
+            height: 150px; /* Ukuran gambar lebih kecil */
+        }
+
+ 
+</style>
 </head>
+
 <body>
+
 <header>
 <h1>Proxy Checker</h1>
 </header>
+<script>
+        let navbarOpen = false;
+
+        function toggleNavbar() {
+            const navbar = document.getElementById("navbar");
+            const menuBtn = document.getElementById("menu-btn");
+            const img = menuBtn.querySelector('img');
+
+		
+            if (navbarOpen) {
+                navbar.style.left = "-80px";
+                img.src = "https://bmkg.xyz/img/buka.png"; 
+            } else {
+                navbar.style.left = "0";
+                img.src = "https://bmkg.xyz/img/tutup.png"; 
+            }
+
+            navbarOpen = !navbarOpen;
+        }
+    </script>
+<div class="navbar" id="navbar">
+        <div class="toggle-btn" id="menu-btn" onclick="toggleNavbar()"><img src="https://bmkg.xyz/img/buka.png" alt="Toggle Menu"></div><div class="navbarconten">
+        <span><a href="${waku1}" target="_blank" rel="noopener noreferrer" style="font-family: 'Rajdhani', sans-serif;">
+    <img src="https://bmkg.xyz/img/mobile.png" alt="menu" width="40">
+  </a></span>
+        <span><a href="/api" target="_self" rel="noopener noreferrer" style="font-family: 'Rajdhani', sans-serif;">
+    <img src="https://bmkg.xyz/img/linksub.png" alt="menu" width="40" style="margin-top: 5px;"></a></span>
+        <span><a href="/proxy" target="_self" rel="noopener noreferrer" style="font-family: 'Rajdhani', sans-serif;">
+    <img src="https://bmkg.xyz/img/vpn.png" alt="menu" width="40" style="margin-top: 5px;">
+  </a></span>
+        <span><a href="${telegramku}" target="_blank" rel="noopener noreferrer" style="font-family: 'Rajdhani', sans-serif;"><img src="https://bmkg.xyz/img/tele.png
+" alt="menu" width="40"></a></span>
+        <span><a href="${telegrambot}" target="_blank" rel="noopener noreferrer" style="font-family: 'Rajdhani', sans-serif;"><img src="https://bmkg.xyz/img/bot.png
+" alt="menu" width="40"></a></span>
+        <span><a href="${pagehost}" target="_self" rel="noopener noreferrer">
+    <img src="https://bmkg.xyz/img/home.png" alt="menu" width="40"></a></span>
+    </div></div>
 <div class="container">
   <div style="display: flex; justify-content: space-between;">
     <input type="text" id="ipInput" placeholder="Input IP:Port(192.168.1.1:443)">
@@ -1445,21 +841,10 @@ input[type="text"] { padding: 10px; width: 150px; margin-bottom: 15px; }
         </tbody>
     </table><center><br/>
     <div style="display: flex; align-items: center; gap: 5px;">
-  <a href="${waku1}" target="_blank" rel="noopener noreferrer" style="font-family: 'Rajdhani', sans-serif;">
-    <img src="https://bmkg.xyz/img/mobile.png" alt="menu" width="50">
-  </a>
-  <a href="${telegramku}" target="_self" rel="noopener noreferrer" style="font-family: 'Rajdhani', sans-serif;">
-    <img src="https://bmkg.xyz/img/tele.png" alt="menu" width="50" style="margin-top: 5px;">
-  </a><a href="${pagehost}" target="_self" rel="noopener noreferrer">
-    <img src="https://bmkg.xyz/img/home.png" alt="menu" width="50">
-  </a><a href="${telegrambot}" target="_self" rel="noopener noreferrer" style="font-family: 'Rajdhani', sans-serif;">
-    <img src="https://bmkg.xyz/img/bot.png" alt="menu" width="50" style="margin-top: 5px;">
-  </a>  <a href="/api" target="_self" rel="noopener noreferrer" style="font-family: 'Rajdhani', sans-serif;">
-    <img src="https://bmkg.xyz/img/linksub.png" alt="menu" width="50" style="margin-top: 5px;">
-  </a></div></center><br/><br/>          
+  </div></center><br/><br/>          
     </div>
     <footer>
-   <h2> <p>&copy; 2025 Proxy Checker. All rights reserved.</p></h2>
+   <h2> &copy; 2025 Proxy Checker. All rights reserved.</h2>
 </footer>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
@@ -1528,7 +913,7 @@ function groupBy(array, key) {
 async function handleSubRequest(hostnem) {
   const html = `
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -1573,31 +958,7 @@ async function handleSubRequest(hostnem) {
         --glow: 0 0 20px rgba(0, 255, 136, 0.3);
       }
       
-      @keyframes rainbow {
-      0% { color: red; }
-      14% { color: black; }
-      28% { color: black; }
-      42% { color: green; }
-      57% { color: blue; }
-      71% { color: indigo; }
-      85% { color: violet; }
-      100% { color: red; }
-    }
-    @keyframes rotate {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(360deg);
-  }
-}
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            outline: none;
-        }
+  
 
         body {
   background: url('https://raw.githubusercontent.com/bitzblack/ip/refs/heads/main/shubham-dhage-5LQ_h5cXB6U-unsplash.jpg') no-repeat center center fixed;
@@ -1689,42 +1050,7 @@ async function handleSubRequest(hostnem) {
       bottom: 0;
     }
     
-
-        .card {
-            width: 100%;
-            margin-top: 10px;
-            padding-top: 10px; /* To avoid content being hidden under the header */
-            max-width: 500px;
-            padding: 2rem;
-            align-items: center;
-  position: relative;
-  z-index: 1;
-            
-        }
-
-        .container {
-            background: var(--color-card);
-            border-radius: 16px;
-            padding-top: 20px; /* To avoid content being hidden under the header */
-  padding-bottom: 20px;
-  margin-top: 95px;
-  margin-bottom: 50px; /* To avoid content being hidden under the footer */
-  padding-left: 10px;
-  padding-right: 10px;
-            box-shadow: 0 10px 30px rgba(0, 255, 136, 0.1);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(0, 255, 136, 0.2);
-            transition: var(--transition);
-            /* Tambahkan efek glow */
-  box-shadow: 0 0 15px rgba(255, 255, 255, 0.6), /* Glow putih */
-              0 0 30px rgba(0, 150, 255, 0.5);   /* Glow biru */
-  
-  /* Default untuk HP */
-  margin-left: auto;
-  margin-right: auto;
-        }
-
-        .title {
+  .title {
             text-align: center;
             color: var(--color-primary);
             margin-bottom: 1.5rem;
@@ -1814,26 +1140,169 @@ async function handleSubRequest(hostnem) {
             text-align: center;
             margin-top: 1rem;
         }
+
+        /* Navbar */
+        .navbar {
+            position: fixed;
+            top: -10%;
+            left: 0;
+            width: 80px;
+            height: 100vh;
+            background: ;
+            color: white;
+            padding: 10px 0px;
+            transition: transform 0.3s ease-in-out;
+            z-index: 1000;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            border-radius: 0 10px 10px 0;
+            transform: translateX(-100%);
+        }
+
+        .navbar.show {
+            transform: translateX(0);
+        }
+
+        .navbar a {
+            display: block;
+            margin: 10px 0;
+        }
+
+        .navbar a img {
+            width: 40px;
+        }
+
+        /* Tombol Toggle */
+        .toggle-btn {
+            position: fixed;
+            top: 50%;
+            left: 0px;
+            transform: translateY(-50%);
+            background: ;
+            border: none;
+            cursor: pointer;            
+            justify-content: center;
+            z-index: 1001;
+            padding: 0px;
+            border-radius: 50%;
+            transition: left 0.3s ease-in-out;
+        }
+
+.toggle-btn img {
+    width: 20px;  /* Menentukan lebar gambar */
+    height: 150px; /* Menentukan tinggi gambar */
+}
+
+
+        /* Saat navbar terbuka, tombol ikut bergeser */
+        .navbar.show + .toggle-btn {
+            left: 80px;
+        }
+
+        /* Konten Utama */
+        .container {
+              background-color: rgba(0, 0, 0, 0.82);
+    flex: 1;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    margin-top: 95px;
+    margin-bottom: 50px;
+    padding-left: 10px;
+    padding-right: 10px;
+    display: flex;
+    flex-direction: column;
+    max-width: 960px;
+    border: 1px solid #fff;
+    border-radius: 10px;
+    align-items: center;
+    position: relative;
+    z-index: 1;
+
+/* Menambahkan margin-left agar konten tidak terhalang navbarr */
+    margin-left: 110px; /* Jarak sesuai dengan lebar navbarr */
+    margin-right: auto;
+
+  /* Tambahkan efek glow */
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.6), /* Glow putih */
+              0 0 30px rgba(0, 150, 255, 0.5);   /* Glow biru */
+  
+  /* Default untuk HP */
+  margin-left: auto;
+  margin-right: auto;
+        }
+
+        h1 {
+            font-size: 2em;
+            margin-bottom: 20px;
+        }
+
+        p {
+            font-size: 1.2em;
+            line-height: 1.6;
+        }
+
+          .card {
+            width: 100%;
+            margin-top: 10px;
+            padding-top: 10px; /* To avoid content being hidden under the header */
+            max-width: 500px;
+            padding: 2rem;
+            align-items: center;
+  position: relative;
+  z-index: 1;
+            
+        }
+
+         .navbarconten {
+    width: 100%;
+    overflow-x: auto; /* Mengaktifkan scroll horizontal */
+    margin-bottom: 0px;
+    border: 1px solid #000; /* Border dengan warna abu-abu */
+    border-radius: 10px; /* Membuat sudut melengkung */
+    padding: 0px; /* Memberi jarak antara border dan konten */
+    background-color: rgba(0, 0, 0, 0.82); /* Warna latar belakang */
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.6), /* Glow putih */
+              0 0 30px rgba(0, 150, 255, 0.5);   /* Glow biru */
+
+    }
     </style>
 </head>
-<body><header><h1 class="title">${namaWeb}</h1></header><center>
-    <div class="container">
-        <div class="card">
+<body>
 
-<center><div class="search-quantum" style="display: flex; align-items: center; flex-direction: column;">
-               <div style="display: flex; align-items: center; gap: 5px;">
-  <a href="${waku1}" target="_blank" rel="noopener noreferrer" style="font-family: 'Rajdhani', sans-serif;">
-    <img src="https://bmkg.xyz/img/mobile.png" alt="menu" width="50">
-  </a>
-  <a href="${telegramku}" target="_self" rel="noopener noreferrer" style="font-family: 'Rajdhani', sans-serif;">
-    <img src="https://bmkg.xyz/img/tele.png" alt="menu" width="50" style="margin-top: 5px;">
-  </a><a href="${pagehost}" target="_self" rel="noopener noreferrer">
-    <img src="https://bmkg.xyz/img/home.png" alt="menu" width="50">
-  </a><a href="${telegrambot}" target="_self" rel="noopener noreferrer" style="font-family: 'Rajdhani', sans-serif;">
-    <img src="https://bmkg.xyz/img/bot.png" alt="menu" width="50" style="margin-top: 5px;">
-  </a>  <a href="/proxy" target="_self" rel="noopener noreferrer" style="font-family: 'Rajdhani', sans-serif;">
-    <img src="https://bmkg.xyz/img/vpn.png" alt="menu" width="50" style="margin-top: 5px;">
-  </a></div></center><br/><br/>             <form id="subLinkForm">
+<header><h1 class="title">${namaWeb}</h1></header>
+
+<!-- Navbar -->
+<div class="navbar" id="navbar">
+    <div class="navbarconten">
+   <center> <span><a href="${waku1}" target="_blank" rel="noopener noreferrer" style="font-family: 'Rajdhani', sans-serif;">
+    <img src="https://bmkg.xyz/img/mobile.png" alt="menu" width="40">
+  </a></span>
+        <span><a href="/api" target="_self" rel="noopener noreferrer" style="font-family: 'Rajdhani', sans-serif;">
+    <img src="https://bmkg.xyz/img/linksub.png" alt="menu" width="40" style="margin-top: 5px;"></a></span>
+        <span><a href="/proxy" target="_self" rel="noopener noreferrer" style="font-family: 'Rajdhani', sans-serif;">
+    <img src="https://bmkg.xyz/img/vpn.png" alt="menu" width="40" style="margin-top: 5px;">
+  </a></span>
+        <span><a href="${telegramku}" target="_blank" rel="noopener noreferrer" style="font-family: 'Rajdhani', sans-serif;"><img src="https://bmkg.xyz/img/tele.png
+" alt="menu" width="40"></a></span>
+        <span><a href="${telegrambot}" target="_blank" rel="noopener noreferrer" style="font-family: 'Rajdhani', sans-serif;"><img src="https://bmkg.xyz/img/bot.png
+" alt="menu" width="40"></a></span>
+        <span><a href="${pagehost}" target="_self" rel="noopener noreferrer">
+    <img src="https://bmkg.xyz/img/home.png" alt="menu" width="40"></a></span>
+   </center> </div>
+
+</div>
+
+<!-- Tombol Toggle -->
+<button class="toggle-btn" id="menu-btn" onclick="toggleNavbar()">
+    <img src="https://bmkg.xyz/img/buka.png" alt="Toggle Menu">
+</button>
+
+<!-- Konten Utama -->
+<div class="container"><center><h1><strong>Generate Sub Link</strong></h1></center>
+    <div class="card">
+        <br/>             <form id="subLinkForm">
                 <div class="form-group">
                     <label for="app">Aplikasi</label>
                     <select id="app" class="form-control" required>
@@ -2152,11 +1621,27 @@ async function handleSubRequest(hostnem) {
                     <button id="openLink" class="copy-btn">Buka Link</button>
                 </div>
             </div>
-        </div>
-    </div></center>
+    </div>
+
+    
+</div>
 <footer>
-   <h2> <p>&copy; 2025 ${namaWeb}.</p></h2>
+   <h2> &copy; 2025 ${namaWeb}.</h2>
 </footer>
+<script>
+    function toggleNavbar() {
+        const navbar = document.getElementById("navbar");
+        const menuBtn = document.getElementById("menu-btn").querySelector('img');
+
+        if (navbar.classList.contains("show")) {
+            navbar.classList.remove("show");
+            menuBtn.src = "https://bmkg.xyz/img/buka.png";
+        } else {
+            navbar.classList.add("show");
+            menuBtn.src = "https://bmkg.xyz/img/tutup.png";
+        }
+    }
+</script>
     <script>
         // Performance optimization: Use event delegation and minimize DOM queries
         document.addEventListener('DOMContentLoaded', () => {
@@ -2369,7 +1854,7 @@ function buildCountryFlag() {
 
     const url = new URL(request.url);
     const hostNameFromRequest = url.hostname;
-    const hostName = 'sakera.cloudproxyip.my.id';
+    const hostName = url.hostname;
 // Lakukan pemrosesan atau log lainnya tanpa respons ke klien
     const page = parseInt(url.searchParams.get('page')) || 1;
     const searchQuery = url.searchParams.get('search') || '';
@@ -2412,7 +1897,7 @@ function buildCountryFlag() {
       .map((config) => {
         const uuid = generateUUIDv4();
         const wildcard = selectedWildcard || hostName;
-        const modifiedHostName = selectedWildcard ? `${selectedWildcard}.${hostName}` : hostName;
+        const modifiedHostName = selectedWildcard ? `${selectedWildcard}.${serverku}` : hostName;
         const url = new URL(request.url);
        const BASE_URL = `https://${url.hostname}`; 
        const CHECK_API = `${BASE_URL}/check-proxy?ip=`; 
@@ -3244,7 +2729,7 @@ function buildCountryFlag() {
           margin: 0.5rem;
         }
         
-        .quantum-card {
+        .quantum-cardww {
           padding: 1rem;
           margin: 0;
           width: 100%;
@@ -3617,22 +3102,122 @@ function buildCountryFlag() {
   }
 }
 
+       .navbarconten {
+    width: 100%;
+    overflow-x: auto; /* Mengaktifkan scroll horizontal */
+    margin-bottom: 0px;
+    border: 1px solid #000; /* Border dengan warna abu-abu */
+    border-radius: 10px; /* Membuat sudut melengkung */
+    padding: 0px; /* Memberi jarak antara border dan konten */
+    background-color: rgba(0, 0, 0, 0.82); /* Warna latar belakang */
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.6), /* Glow putih */
+              0 0 30px rgba(0, 150, 255, 0.5);   /* Glow biru */
 
-    </style>
+    }
+     .navbar {
+            position: fixed;
+            top: -10%;
+            left: 0;
+            width: 80px;
+            height: 100vh;
+            background: ;
+            color: white;
+            padding: 10px 0px;
+            transition: transform 0.3s ease-in-out;
+            z-index: 1000;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            border-radius: 0 10px 10px 0;
+            transform: translateX(-100%);
+        }
+
+        .navbar.show {
+            transform: translateX(0);
+        }
+
+        .navbar a {
+            display: block;
+            margin: 10px 0;
+        }
+
+        .navbar a img {
+            width: 40px;
+        }
+
+        /* Tombol Toggle */
+        .toggle-btn {
+            position: fixed;
+            top: 50%;
+            left: 0px;
+            transform: translateY(-50%);
+            background: ;
+            border: none;
+            cursor: pointer;            
+            justify-content: center;
+            z-index: 1001;
+            padding: 0px;
+            border-radius: 50%;
+            transition: left 0.3s ease-in-out;
+        }
+
+.toggle-btn img {
+    width: 20px;  /* Menentukan lebar gambar */
+    height: 150px; /* Menentukan tinggi gambar */
+}
+
+
+        /* Saat navbar terbuka, tombol ikut bergeser */
+        .navbar.show + .toggle-btn {
+            left: 80px;
+        }
+
+</style>
 </head>
 <body>
 <header><h1 class="quantum-title">${namaWeb}</h1></header>
+<script>
+    function toggleNavbar() {
+        const navbar = document.getElementById("navbar");
+        const menuBtn = document.getElementById("menu-btn").querySelector('img');
+
+        if (navbar.classList.contains("show")) {
+            navbar.classList.remove("show");
+            menuBtn.src = "https://bmkg.xyz/img/buka.png";
+        } else {
+            navbar.classList.add("show");
+            menuBtn.src = "https://bmkg.xyz/img/tutup.png";
+        }
+    }
+</script>
+<div class="navbar" id="navbar">
+    <div class="navbarconten">
+   <center> <span><a href="${waku1}" target="_blank" rel="noopener noreferrer" style="font-family: 'Rajdhani', sans-serif;">
+    <img src="https://bmkg.xyz/img/mobile.png" alt="menu" width="40">
+  </a></span>
+        <span><a href="/api" target="_self" rel="noopener noreferrer" style="font-family: 'Rajdhani', sans-serif;">
+    <img src="https://bmkg.xyz/img/linksub.png" alt="menu" width="40" style="margin-top: 5px;"></a></span>
+        <span><a href="/proxy" target="_self" rel="noopener noreferrer" style="font-family: 'Rajdhani', sans-serif;">
+    <img src="https://bmkg.xyz/img/vpn.png" alt="menu" width="40" style="margin-top: 5px;">
+  </a></span>
+        <span><a href="${telegramku}" target="_blank" rel="noopener noreferrer" style="font-family: 'Rajdhani', sans-serif;"><img src="https://bmkg.xyz/img/tele.png
+" alt="menu" width="40"></a></span>
+        <span><a href="${telegrambot}" target="_blank" rel="noopener noreferrer" style="font-family: 'Rajdhani', sans-serif;"><img src="https://bmkg.xyz/img/bot.png
+" alt="menu" width="40"></a></span>
+        <span><a href="${pagehost}" target="_self" rel="noopener noreferrer">
+    <img src="https://bmkg.xyz/img/home.png" alt="menu" width="40"></a></span>
+   </center> </div>
+
+</div>
+
+<!-- Tombol Toggle -->
+<button class="toggle-btn" id="menu-btn" onclick="toggleNavbar()">
+    <img src="https://bmkg.xyz/img/buka.png" alt="Toggle Menu">
+</button>
     <div class="quantum-container">
        <div class="search-quantum" style="display: flex; align-items: center; flex-direction: column;">
               <div style="display: flex; align-items: center; gap: 5px;">
-  <a href="${waku1}" target="_blank" rel="noopener noreferrer" style="font-family: 'Rajdhani', sans-serif;">
-    <img src="https://bmkg.xyz/img/mobile.png" alt="menu" width="50">
-  </a>
-  <a href="/api" target="_self" rel="noopener noreferrer" style="font-family: 'Rajdhani', sans-serif;">
-    <img src="https://bmkg.xyz/img/linksub.png" alt="menu" width="50" style="margin-top: 5px;">
-  </a><a href="/proxy" target="_self" rel="noopener noreferrer" style="font-family: 'Rajdhani', sans-serif;">
-    <img src="https://bmkg.xyz/img/vpn.png" alt="menu" width="50" style="margin-top: 5px;">
-  </a>
   <input type="text" 
          id="search-bar" 
          placeholder="Search by IP, CountryCode, or ISP"
@@ -3642,21 +3227,19 @@ function buildCountryFlag() {
     <img src="https://bmkg.xyz/img/search.png" alt="menu" width="40">
   </button>
 </div>   ${searchQuery
-                ? `<button id="home-button" onclick="goToHomePage('${hostName}')">
+                ? `<button id="home-button" onclick="goToHomePage('${serverku}')">
                   <img src="https://bmkg.xyz/img/home.png" alt="menu" width="50" style="margin-top: 5px;">
                 </button>`
                 : ''}            </div>            
             
-            <div class="wildcard-dropdown"><a href="${telegramku}" target="_blank" rel="noopener noreferrer" style="font-family: 'Rajdhani', sans-serif;"><img src="https://bmkg.xyz/img/tele.png
-" alt="menu" width="50"></a>
+            <div class="wildcard-dropdown">
   <select id="wildcard" name="wildcard" onchange="onWildcardChange(event)" style="width: 90px; height: 45px;">
     <option value="" ${!selectedWildcard ? 'selected' : ''}>No Wildcard</option>
     ${wildcards.map(w => `<option value="${w}" ${selectedWildcard === w ? 'selected' : ''}>${w}</option>`).join('')}
   </select>
   <select id="configType" name="configType" onchange="onConfigTypeChange(event)" style="width: 60px; height: 45px;">
     <option value="tls" ${selectedConfigType === 'tls' ? 'selected' : ''}>TLS</option>
-    <option value="non-tls" ${selectedConfigType === 'non-tls' ? 'selected' : ''}>NON TLS</option> </select><a href="${telegrambot}" target="_blank" rel="noopener noreferrer" style="font-family: 'Rajdhani', sans-serif;"><img src="https://bmkg.xyz/img/bot.png
-" alt="menu" width="50"></a>
+    <option value="non-tls" ${selectedConfigType === 'non-tls' ? 'selected' : ''}>NON TLS</option> </select>
 </div>
 <div 
     class="w-full h-12 overflow-x-auto px-2 py-1 flex items-center space-x-2 shadow-lg bg-transparent border"
@@ -3693,7 +3276,7 @@ function buildCountryFlag() {
          
         </div>
     </div><footer class="footer">
-    <h2  class="quantum-title1"><p>&copy; 2025 ${namaWeb}</p></h2>
+    <h2  class="quantum-title1">&copy; 2025 ${namaWeb}</h2>
   </footer>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     
@@ -3739,7 +3322,7 @@ function buildCountryFlag() {
         };
 
         function goToHomePage(hostName) {
-          const homeURL = \`https://\${hostName}/\`;
+          const homeURL = \`https://\${serverku}/\`;
           window.location.href = homeURL;
         }
         
