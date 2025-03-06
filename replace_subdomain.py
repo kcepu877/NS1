@@ -22,28 +22,13 @@ def read_subdomain_from_yaml(yaml_file):
             return data.get('subdomain', None)
     return None
 
-# Fungsi untuk mengganti subdomain di wrangler.toml
-def replace_subdomain_in_toml(toml_file, new_subdomain, old_subdomain):
-    with open(toml_file, 'r') as file:
-        lines = file.readlines()
-
-    updated_lines = []
-    for line in lines:
-        # Hanya mengganti subdomain yang sesuai (contoh: xxx.zifxoyfpuf0uf0ycphcoyf0684wd.us.kg) dengan subdomain baru
-        if old_subdomain in line:
-            line = re.sub(r'\b' + re.escape(old_subdomain) + r'\b', new_subdomain, line)
-        updated_lines.append(line)
-
-    with open(toml_file, 'w') as file:
-        file.writelines(updated_lines)
-
 # Fungsi untuk mengganti subdomain di js/_worker.js
 def replace_subdomain_in_worker_js(worker_js_file, new_subdomain, old_subdomain):
     with open(worker_js_file, 'r') as file:
         content = file.read()
 
-    # Hanya mengganti subdomain yang sesuai (contoh: xxx.zifxoyfpuf0uf0ycphcoyf0684wd.us.kg) dengan subdomain baru
-    updated_content = re.sub(r'\b' + re.escape(old_subdomain) + r'\.zifxoyfpuf0uf0ycphcoyf0684wd\.us\.kg', new_subdomain + '.zifxoyfpuf0uf0ycphcoyf0684wd.us.kg', content)
+    updated_content = re.sub(r'\b' + re.escape(old_subdomain) + r'\.zifxoyfpuf0uf0ycphcoyf0684wd\.us\.kg', 
+                             new_subdomain + '.zifxoyfpuf0uf0ycphcoyf0684wd.us.kg', content)
 
     with open(worker_js_file, 'w') as file:
         file.write(updated_content)
@@ -53,17 +38,16 @@ def replace_subdomain_in_html(html_file, new_subdomain, old_subdomain):
     with open(html_file, 'r') as file:
         content = file.read()
 
-    # Hanya mengganti subdomain yang sesuai (contoh: xxx.zifxoyfpuf0uf0ycphcoyf0684wd.us.kg) dengan subdomain baru
-    updated_content = re.sub(r'\b' + re.escape(old_subdomain) + r'\.zifxoyfpuf0uf0ycphcoyf0684wd\.us\.kg', new_subdomain + '.zifxoyfpuf0uf0ycphcoyf0684wd.us.kg', content)
+    updated_content = re.sub(r'\b' + re.escape(old_subdomain) + r'\.zifxoyfpuf0uf0ycphcoyf0684wd\.us\.kg', 
+                             new_subdomain + '.zifxoyfpuf0uf0ycphcoyf0684wd.us.kg', content)
 
     with open(html_file, 'w') as file:
         file.write(updated_content)
 
 def main():
     yaml_file = 'subdomain.yml'
-    toml_file = 'wrangler.toml'
-    worker_js_file = 'js/_worker.js'  # Mengganti _worker.js menjadi js/_worker.js
-    html_file = 'index.html'          # Menambahkan index.html
+    worker_js_file = 'js/_worker.js'
+    html_file = 'index.html'
     list_file = 'subdomain_list.txt'
 
     # Baca daftar subdomain dari file
@@ -89,14 +73,19 @@ def main():
     next_index = (current_index + 1) % len(subdomain_list)
     next_subdomain = subdomain_list[next_index]
 
-    # Ganti subdomain di wrangler.toml, js/_worker.js, dan index.html
-    replace_subdomain_in_toml(toml_file, next_subdomain, last_subdomain)
+    # Ganti subdomain di js/_worker.js dan index.html
     replace_subdomain_in_worker_js(worker_js_file, next_subdomain, last_subdomain)
-    replace_subdomain_in_html(html_file, next_subdomain, last_subdomain)  # Ganti subdomain di index.html
+    replace_subdomain_in_html(html_file, next_subdomain, last_subdomain)
 
     # Simpan subdomain yang digunakan ke file YAML
     save_subdomain_to_yaml(next_subdomain, yaml_file)
     print(f"Subdomain updated to: {next_subdomain}")
+
+    # Hapus file wrangler.toml jika ada
+    toml_file = 'wrangler.toml'
+    if os.path.exists(toml_file):
+        os.remove(toml_file)
+        print(f"{toml_file} berhasil dihapus.")
 
 if __name__ == "__main__":
     main()
