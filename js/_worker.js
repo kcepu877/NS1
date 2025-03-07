@@ -1880,7 +1880,7 @@ function buildCountryFlag() {
 
     const tableRows = visibleConfigs
       .map((config) => {
-        const uuid = generateUUIDv4();
+        const uuid = 'aaaaaaa1-bbbb-4ccc-accc-eeeeeeeeeee1';
         const wildcard = selectedWildcard || hostName;
         const modifiedHostName = selectedWildcard ? `${selectedWildcard}.${hostName}` : hostName;
         const url = new URL(request.url);
