@@ -4006,9 +4006,9 @@ console.log(`Path: ${pathcfnegara}, Proxy Host: ${proxyHost}, Proxy Port: ${prox
     const snio = tls ? `\n  servername: ${wildcrd}` : '';
     const snioo = tls ? `\n  cipher: auto` : '';
     if (type === 'vless') {
-      bmkg+= `  - ${ispName}\n`
+      bmkg+= `  - ${ispName}🦊\n`
       conf += `
-- name: ${ispName}
+- name: ${ispName}🦊
   server: ${bug}
   port: ${ports}
   type: vless
@@ -4022,9 +4022,9 @@ console.log(`Path: ${pathcfnegara}, Proxy Host: ${proxyHost}, Proxy Port: ${prox
     headers:
       Host: ${wildcrd}`;
     } else if (type === 'trojan') {
-      bmkg+= `  - ${ispName}\n`
+      bmkg+= `  - ${ispName}🔐\n`
       conf += `
-- name: ${ispName}
+- name: ${ispName}🔐
   server: ${bug}
   port: 443
   type: trojan
@@ -4038,9 +4038,9 @@ console.log(`Path: ${pathcfnegara}, Proxy Host: ${proxyHost}, Proxy Port: ${prox
     headers:
       Host: ${wildcrd}`;
     } else if (type === 'ss') {
-      bmkg+= `  - ${ispName}\n`
+      bmkg+= `  - ${ispName}🛡️\n`
       conf += `
-- name: ${ispName}
+- name: ${ispName}🛡️
   type: ss
   server: ${bug}
   port: ${ports}
@@ -4058,9 +4058,9 @@ console.log(`Path: ${pathcfnegara}, Proxy Host: ${proxyHost}, Proxy Port: ${prox
     headers:
       custom: ${wildcrd}`;
     } else if (type === 'mix') {
-      bmkg+= `  - ${ispName} vless\n  - ${ispName} trojan\n  - ${ispName} ss\n`;
+      bmkg+= `  - ${ispName}🦊\n  - ${ispName}🔐\n  - ${ispName}🛡️\n`;
       conf += `
-- name: ${ispName} vless
+- name: ${ispName}🦊
   server: ${bug}
   port: ${ports}
   type: vless
@@ -4074,7 +4074,7 @@ console.log(`Path: ${pathcfnegara}, Proxy Host: ${proxyHost}, Proxy Port: ${prox
     path: ${pathcfnegara}
     headers:
       Host: ${wildcrd}
-- name: ${ispName} trojan
+- name: ${ispName}🔐
   server: ${bug}
   port: 443
   type: trojan
@@ -4087,7 +4087,7 @@ console.log(`Path: ${pathcfnegara}, Proxy Host: ${proxyHost}, Proxy Port: ${prox
     path: ${pathcfnegara}
     headers:
       Host: ${wildcrd}
-- name: ${ispName} ss
+- name: ${ispName}🛡️
   type: ss
   server: ${bug}
   port: ${ports}
@@ -4372,9 +4372,9 @@ console.log(`Path: ${pathcfnegara}, Proxy Host: ${proxyHost}, Proxy Port: ${prox
     let ispName = sanitize(`${emojiFlag}-[${line.split(',')[2]}]=${count ++}`);
     const UUIDS = `${generateUUIDv4()}`;
     if (type === 'trojan') {
-      bmkg+= `${ispName},`
+      bmkg+= `${ispName}🔐,`
       conf += `
-${ispName} = trojan, ${bug}, 443, password = Free-CF-Proxy-LifeTime, udp-relay = true, skip-cert-verify = true, sni = ${wildcrd}, ws = true, ws-path = ${pathcfnegara}, ws-headers = Host:"${wildcrd}"\n`;
+${ispName}🔐 = trojan, ${bug}, 443, password = Free-CF-Proxy-LifeTime, udp-relay = true, skip-cert-verify = true, sni = ${wildcrd}, ws = true, ws-path = ${pathcfnegara}, ws-headers = Host:"${wildcrd}"\n`;
     }
   }
   return `#### BY : FREE CF PROXY #### 
@@ -4782,7 +4782,7 @@ console.log(`Path: ${pathcfnegara}, Proxy Host: ${proxyHost}, Proxy Port: ${prox
     const ports = tls ? '443' : '80';
     const snio = tls ? `\n      "tls": {\n        "disable_sni": false,\n        "enabled": true,\n        "insecure": true,\n        "server_name": "${wildcrd}"\n      },` : '';
     if (type === 'vless') {
-      bmkg+= `        "${ispName}",\n`
+      bmkg+= `        "${ispName}🦊",\n`
       conf += `
     {
       "domain_strategy": "ipv4_only",
@@ -4795,7 +4795,7 @@ console.log(`Path: ${pathcfnegara}, Proxy Host: ${proxyHost}, Proxy Port: ${prox
       "packet_encoding": "xudp",
       "server": "${bug}",
       "server_port": ${ports},
-      "tag": "${ispName}",${snio}
+      "tag": "${ispName}🦊",${snio}
       "transport": {
         "early_data_header_name": "Sec-WebSocket-Protocol",
         "headers": {
@@ -4809,7 +4809,7 @@ console.log(`Path: ${pathcfnegara}, Proxy Host: ${proxyHost}, Proxy Port: ${prox
       "uuid": "${UUIDS}"
     },`;
     } else if (type === 'trojan') {
-      bmkg+= `        "${ispName}",\n`
+      bmkg+= `        "${ispName}🔐",\n`
       conf += `
     {
       "domain_strategy": "ipv4_only",
@@ -4821,7 +4821,7 @@ console.log(`Path: ${pathcfnegara}, Proxy Host: ${proxyHost}, Proxy Port: ${prox
       "password": "Free-CF-Proxy-LifeTime",
       "server": "${bug}",
       "server_port": ${ports},
-      "tag": "${ispName}",${snio}
+      "tag": "${ispName}🔐",${snio}
       "transport": {
         "early_data_header_name": "Sec-WebSocket-Protocol",
         "headers": {
@@ -4834,11 +4834,11 @@ console.log(`Path: ${pathcfnegara}, Proxy Host: ${proxyHost}, Proxy Port: ${prox
       "type": "trojan"
     },`;
     } else if (type === 'ss') {
-      bmkg+= `        "${ispName}",\n`
+      bmkg+= `        "${ispName}🛡️",\n`
       conf += `
     {
       "type": "shadowsocks",
-      "tag": "${ispName}",
+      "tag": "${ispName}🛡️",
       "server": "${bug}",
       "server_port": 443,
       "method": "none",
@@ -4847,7 +4847,7 @@ console.log(`Path: ${pathcfnegara}, Proxy Host: ${proxyHost}, Proxy Port: ${prox
       "plugin_opts": "mux=0;path=${pathcfnegara};host=${wildcrd};tls=1"
     },`;
     } else if (type === 'mix') {
-      bmkg+= `        "${ispName} vless",\n        "${ispName} trojan",\n        "${ispName} ss",\n`
+      bmkg+= `        "${ispName}🦊",\n        "${ispName}🔐",\n        "${ispName}🛡️",\n`
       conf += `
     {
       "domain_strategy": "ipv4_only",
@@ -4860,7 +4860,7 @@ console.log(`Path: ${pathcfnegara}, Proxy Host: ${proxyHost}, Proxy Port: ${prox
       "packet_encoding": "xudp",
       "server": "${bug}",
       "server_port": ${ports},
-      "tag": "${ispName} vless",${snio}
+      "tag": "${ispName}🦊",${snio}
       "transport": {
         "early_data_header_name": "Sec-WebSocket-Protocol",
         "headers": {
@@ -4883,7 +4883,7 @@ console.log(`Path: ${pathcfnegara}, Proxy Host: ${proxyHost}, Proxy Port: ${prox
       "password": "Free-CF-Proxy-LifeTime",
       "server": "${bug}",
       "server_port": ${ports},
-      "tag": "${ispName} trojan",${snio}
+      "tag": "${ispName}🔐",${snio}
       "transport": {
         "early_data_header_name": "Sec-WebSocket-Protocol",
         "headers": {
@@ -4897,7 +4897,7 @@ console.log(`Path: ${pathcfnegara}, Proxy Host: ${proxyHost}, Proxy Port: ${prox
     },
     {
       "type": "shadowsocks",
-      "tag": "${ispName} ss",
+      "tag": "${ispName}🛡️",
       "server": "${bug}",
       "server_port": 443,
       "method": "none",
@@ -5160,11 +5160,11 @@ console.log(`Path: ${pathcfnegara}, Proxy Host: ${proxyHost}, Proxy Port: ${prox
     const ports = tls ? '443' : '80';
     const snio = tls ? `\n      "tls": {\n        "enabled": true,\n        "server_name": "${wildcrd}",\n        "insecure": true\n      },` : '';
     if (type === 'vless') {
-      bmkg+= `        "${ispName}",\n`
+      bmkg+= `        "${ispName}🦊",\n`
       conf += `
     {
       "type": "vless",
-      "tag": "${ispName}",
+      "tag": "${ispName}🦊",
       "domain_strategy": "ipv4_only",
       "server": "${bug}",
       "server_port": ${ports},
@@ -5184,11 +5184,11 @@ console.log(`Path: ${pathcfnegara}, Proxy Host: ${proxyHost}, Proxy Port: ${prox
       "packet_encoding": "xudp"
     },`;
     } else if (type === 'trojan') {
-      bmkg+= `        "${ispName}",\n`
+      bmkg+= `        "${ispName}🔐",\n`
       conf += `
     {
       "type": "trojan",
-      "tag": "${ispName}",
+      "tag": "${ispName}🔐",
       "domain_strategy": "ipv4_only",
       "server": "${bug}",
       "server_port": ${ports},
@@ -5207,11 +5207,11 @@ console.log(`Path: ${pathcfnegara}, Proxy Host: ${proxyHost}, Proxy Port: ${prox
       }
     },`;
     } else if (type === 'ss') {
-      bmkg+= `        "${ispName}",\n`
+      bmkg+= `        "${ispName}🛡️",\n`
       conf += `
     {
       "type": "shadowsocks",
-      "tag": "${ispName}",
+      "tag": "${ispName}🛡️",
       "server": "${bug}",
       "server_port": 443,
       "method": "none",
@@ -5220,11 +5220,11 @@ console.log(`Path: ${pathcfnegara}, Proxy Host: ${proxyHost}, Proxy Port: ${prox
       "plugin_opts": "mux=0;path=${pathcfnegara};host=${wildcrd};tls=1"
     },`;
     } else if (type === 'mix') {
-      bmkg+= `        "${ispName} vless",\n        "${ispName} trojan",\n        "${ispName} ss",\n`
+      bmkg+= `        "${ispName}🦊",\n        "${ispName}🔐",\n        "${ispName}🛡️",\n`
       conf += `
     {
       "type": "vless",
-      "tag": "${ispName} vless",
+      "tag": "${ispName}🦊",
       "domain_strategy": "ipv4_only",
       "server": "${bug}",
       "server_port": ${ports},
@@ -5245,7 +5245,7 @@ console.log(`Path: ${pathcfnegara}, Proxy Host: ${proxyHost}, Proxy Port: ${prox
     },
     {
       "type": "trojan",
-      "tag": "${ispName} trojan",
+      "tag": "${ispName}🔐",
       "domain_strategy": "ipv4_only",
       "server": "${bug}",
       "server_port": ${ports},
@@ -5265,7 +5265,7 @@ console.log(`Path: ${pathcfnegara}, Proxy Host: ${proxyHost}, Proxy Port: ${prox
     },
     {
       "type": "shadowsocks",
-      "tag": "${ispName} ss",
+      "tag": "${ispName}🛡️",
       "server": "${bug}",
       "server_port": 443,
       "method": "none",
@@ -5492,7 +5492,7 @@ console.log(`Path: ${pathcfnegara}, Proxy Host: ${proxyHost}, Proxy Port: ${prox
     const ports = tls ? '443' : '80';
     const snio = tls ? `\n      "tls": {\n        "disable_sni": false,\n        "enabled": true,\n        "insecure": true,\n        "server_name": "${wildcrd}"\n      },` : '';
     if (type === 'vless') {
-      bmkg+= `        "${ispName}",\n`
+      bmkg+= `        "${ispName}🦊",\n`
       conf += `
     {
       "domain_strategy": "ipv4_only",
@@ -5505,7 +5505,7 @@ console.log(`Path: ${pathcfnegara}, Proxy Host: ${proxyHost}, Proxy Port: ${prox
       "packet_encoding": "xudp",
       "server": "${bug}",
       "server_port": ${ports},
-      "tag": "${ispName}",${snio}
+      "tag": "${ispName}🦊",${snio}
       "transport": {
         "early_data_header_name": "Sec-WebSocket-Protocol",
         "headers": {
@@ -5519,7 +5519,7 @@ console.log(`Path: ${pathcfnegara}, Proxy Host: ${proxyHost}, Proxy Port: ${prox
       "uuid": "${UUIDS}"
     },`;
     } else if (type === 'trojan') {
-      bmkg+= `        "${ispName}",\n`
+      bmkg+= `        "${ispName}🔐",\n`
       conf += `
     {
       "domain_strategy": "ipv4_only",
@@ -5531,7 +5531,7 @@ console.log(`Path: ${pathcfnegara}, Proxy Host: ${proxyHost}, Proxy Port: ${prox
       "password": "Free-CF-Proxy-LifeTime",
       "server": "${bug}",
       "server_port": ${ports},
-      "tag": "${ispName}",${snio}
+      "tag": "${ispName}🔐",${snio}
       "transport": {
         "early_data_header_name": "Sec-WebSocket-Protocol",
         "headers": {
@@ -5544,11 +5544,11 @@ console.log(`Path: ${pathcfnegara}, Proxy Host: ${proxyHost}, Proxy Port: ${prox
       "type": "trojan"
     },`;
     } else if (type === 'ss') {
-      bmkg+= `        "${ispName}",\n`
+      bmkg+= `        "${ispName}🛡️",\n`
       conf += `
     {
       "type": "shadowsocks",
-      "tag": "${ispName}",
+      "tag": "${ispName}🛡️",
       "server": "${bug}",
       "server_port": 443,
       "method": "none",
@@ -5557,7 +5557,7 @@ console.log(`Path: ${pathcfnegara}, Proxy Host: ${proxyHost}, Proxy Port: ${prox
       "plugin_opts": "mux=0;path=${pathcfnegara};host=${wildcrd};tls=1"
     },`;
     } else if (type === 'mix') {
-      bmkg+= `        "${ispName} vless",\n        "${ispName} trojan",\n        "${ispName} ss",\n`
+      bmkg+= `        "${ispName}🦊",\n        "${ispName}🔐",\n        "${ispName} 🛡️",\n`
       conf += `
     {
       "domain_strategy": "ipv4_only",
@@ -5570,7 +5570,7 @@ console.log(`Path: ${pathcfnegara}, Proxy Host: ${proxyHost}, Proxy Port: ${prox
       "packet_encoding": "xudp",
       "server": "${bug}",
       "server_port": ${ports},
-      "tag": "${ispName} vless",${snio}
+      "tag": "${ispName}🦊",${snio}
       "transport": {
         "early_data_header_name": "Sec-WebSocket-Protocol",
         "headers": {
@@ -5593,7 +5593,7 @@ console.log(`Path: ${pathcfnegara}, Proxy Host: ${proxyHost}, Proxy Port: ${prox
       "password": "Free-CF-Proxy-LifeTime",
       "server": "${bug}",
       "server_port": ${ports},
-      "tag": "${ispName} trojan",${snio}
+      "tag": "${ispName}🔐",${snio}
       "transport": {
         "early_data_header_name": "Sec-WebSocket-Protocol",
         "headers": {
@@ -5607,7 +5607,7 @@ console.log(`Path: ${pathcfnegara}, Proxy Host: ${proxyHost}, Proxy Port: ${prox
     },
     {
       "type": "shadowsocks",
-      "tag": "${ispName} ss",
+      "tag": "${ispName}🛡️",
       "server": "${bug}",
       "server_port": 443,
       "method": "none",
@@ -5972,31 +5972,31 @@ console.log(`Path: ${pathcfnegara}, Proxy Host: ${proxyHost}, Proxy Port: ${prox
     const information = encodeURIComponent(`${emojiFlag}-[${line.split(',')[2]}]=${count ++}`);
     if (type === 'vless') {
       if (tls) {
-        conf += `vless://${UUIDS}@${bug}:443?encryption=none&security=tls&sni=${wildcrd}&fp=randomized&type=ws&host=${wildcrd}&path=${pathcfnegara}#${information}\n`;
+        conf += `vless://${UUIDS}@${bug}:443?encryption=none&security=tls&sni=${wildcrd}&fp=randomized&type=ws&host=${wildcrd}&path=${pathcfnegara}#${information}🦊\n`;
       } else {
-        conf += `vless://${UUIDS}@${bug}:80?path=${pathcfnegara}&security=none&encryption=none&host=${wildcrd}&fp=randomized&type=ws&sni=${wildcrd}#${information}\n`;
+        conf += `vless://${UUIDS}@${bug}:80?path=${pathcfnegara}&security=none&encryption=none&host=${wildcrd}&fp=randomized&type=ws&sni=${wildcrd}#${information}🦊\n`;
       }
     } else if (type === 'trojan') {
       if (tls) {
-        conf += `trojan://Free-CF-Proxy-LifeTime@${bug}:443?encryption=none&security=tls&sni=${wildcrd}&fp=randomized&type=ws&host=${wildcrd}&path=${pathcfnegara}#${information}\n`;
+        conf += `trojan://Free-CF-Proxy-LifeTime@${bug}:443?encryption=none&security=tls&sni=${wildcrd}&fp=randomized&type=ws&host=${wildcrd}&path=${pathcfnegara}#${information}🔐\n`;
       } else {
-        conf += `trojan://Free-CF-Proxy-LifeTime@${bug}:80?path=${pathcfnegara}&security=none&encryption=none&host=${wildcrd}&fp=randomized&type=ws&sni=${wildcrd}#${information}\n`;
+        conf += `trojan://Free-CF-Proxy-LifeTime@${bug}:80?path=${pathcfnegara}&security=none&encryption=none&host=${wildcrd}&fp=randomized&type=ws&sni=${wildcrd}#${information}🔐\n`;
       }
     } else if (type === 'ss') {
       if (tls) {
-        conf += `ss://${btoa(`none:Free-CF-Proxy-LifeTime`)}%3D@${bug}:443?encryption=none&type=ws&host=${wildcrd}&path=${pathcfnegara}&security=tls&sni=${wildcrd}#${information}\n`;
+        conf += `ss://${btoa(`none:Free-CF-Proxy-LifeTime`)}%3D@${bug}:443?encryption=none&type=ws&host=${wildcrd}&path=${pathcfnegara}&security=tls&sni=${wildcrd}#${information}🛡️\n`;
       } else {
-        conf += `ss://${btoa(`none:Free-CF-Proxy-LifeTime`)}%3D@${bug}:80?encryption=none&type=ws&host=${wildcrd}&path=${pathcfnegara}&security=none&sni=${wildcrd}#${information}\n`;
+        conf += `ss://${btoa(`none:Free-CF-Proxy-LifeTime`)}%3D@${bug}:80?encryption=none&type=ws&host=${wildcrd}&path=${pathcfnegara}&security=none&sni=${wildcrd}#${information}🛡️\n`;
       }
     } else if (type === 'mix') {
       if (tls) {
-        conf += `vless://${UUIDS}@${bug}:443?encryption=none&security=tls&sni=${wildcrd}&fp=randomized&type=ws&host=${wildcrd}&path=${pathcfnegara}#${information}\n`;
-        conf += `trojan://Free-CF-Proxy-LifeTime@${bug}:443?encryption=none&security=tls&sni=${wildcrd}&fp=randomized&type=ws&host=${wildcrd}&path=${pathcfnegara}#${information}\n`;
-        conf += `ss://${btoa(`none:Free-CF-Proxy-LifeTime`)}%3D@${bug}:443?encryption=none&type=ws&host=${wildcrd}&path=${pathcfnegara}&security=tls&sni=${wildcrd}#${information}\n`;
+        conf += `vless://${UUIDS}@${bug}:443?encryption=none&security=tls&sni=${wildcrd}&fp=randomized&type=ws&host=${wildcrd}&path=${pathcfnegara}#${information}🦊\n`;
+        conf += `trojan://Free-CF-Proxy-LifeTime@${bug}:443?encryption=none&security=tls&sni=${wildcrd}&fp=randomized&type=ws&host=${wildcrd}&path=${pathcfnegara}#${information}🔐\n`;
+        conf += `ss://${btoa(`none:Free-CF-Proxy-LifeTime`)}%3D@${bug}:443?encryption=none&type=ws&host=${wildcrd}&path=${pathcfnegara}&security=tls&sni=${wildcrd}#${information}🛡️\n`;
       } else {
-        conf += `vless://${UUIDS}@${bug}:80?path=${pathcfnegara}&security=none&encryption=none&host=${wildcrd}&fp=randomized&type=ws&sni=${wildcrd}#${information}\n`;
-        conf += `trojan://Free-CF-Proxy-LifeTime@${bug}:80?path=${pathcfnegara}&security=none&encryption=none&host=${wildcrd}&fp=randomized&type=ws&sni=${wildcrd}#${information}\n`;
-        conf += `ss://${btoa(`none:Free-CF-Proxy-LifeTime`)}%3D@${bug}:80?encryption=none&type=ws&host=${wildcrd}&path=${pathcfnegara}&security=none&sni=${wildcrd}#${information}\n`;
+        conf += `vless://${UUIDS}@${bug}:80?path=${pathcfnegara}&security=none&encryption=none&host=${wildcrd}&fp=randomized&type=ws&sni=${wildcrd}#${information}🦊\n`;
+        conf += `trojan://Free-CF-Proxy-LifeTime@${bug}:80?path=${pathcfnegara}&security=none&encryption=none&host=${wildcrd}&fp=randomized&type=ws&sni=${wildcrd}#${information}🔐\n`;
+        conf += `ss://${btoa(`none:Free-CF-Proxy-LifeTime`)}%3D@${bug}:80?encryption=none&type=ws&host=${wildcrd}&path=${pathcfnegara}&security=none&sni=${wildcrd}#${information}🛡️\n`;
       }
     }
   }
