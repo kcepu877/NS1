@@ -5836,6 +5836,8 @@ async function generateV2rayngSub(type, bug, wildcrd, tls, country = null, limit
   }
 
   let conf = '';
+  let count = 1;
+
 
   for (let line of ips) {
     const parts = line.split(',');
@@ -5860,7 +5862,7 @@ console.log(`Path: ${pathcfnegara}, Proxy Host: ${proxyHost}, Proxy Port: ${prox
 
     // Gunakan teks Latin-1 untuk menggantikan emoji flag
     const countryText = `[${countryCode}]`; // Format bendera ke teks Latin-1
-    const ispInfo = `${countryText} ${isp}`;
+    const ispInfo = `${countryText}=${count ++} ${isp}`;
     const UUIDS = `aaaaaaa1-bbbb-4ccc-accc-eeeeeeeeeee1`;
 
     if (type === 'vless') {
